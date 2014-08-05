@@ -1,0 +1,17 @@
+{% extends 'public/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Add an activity</h1>
+            {% crispy form form.helper %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block extra_js %}
+    <script>
+        $('#id_date').datepicker();
+    </script>
+{% endblock extra_js %}

@@ -1,0 +1,20 @@
+{
+  "name": "keeprunning",
+  "version": "0.0.1",
+  "authors": [
+    "Javi Manzano <javi.manzano.oller@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "",
+    "bootstrap": ""
+  }
+}

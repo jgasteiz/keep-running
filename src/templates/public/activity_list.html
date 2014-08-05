@@ -1,0 +1,12 @@
+{% extends 'public/base.html' %}
+
+{% block content %}
+    <h1>Activity list</h1>
+    <ul>
+        {% for activity in activity_list %}
+        <li>{{ activity }} <a class="btn btn-danger btn-xs" href="{% url 'public:delete_activity' activity.pk %}">Delete</a></li>
+        {% empty %}
+        <li>No activities yet. <a href="{% url 'public:create_activity' %}">Create one</a>.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
