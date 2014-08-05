@@ -1,9 +1,11 @@
-from django import forms
+from datetime import datetime
+
+from django.core.urlresolvers import reverse_lazy
 
 from crispy_forms.bootstrap import FormActions
 from crispy_forms.layout import Layout, Submit, HTML, Row, Div
 from crispy_forms.helper import FormHelper
-from django.core.urlresolvers import reverse, reverse_lazy
+import floppyforms.__future__ as forms
 
 from keeprunning.core.models import Activity
 
@@ -55,3 +57,13 @@ class ActivityForm(forms.ModelForm):
                 HTML('<a class="btn btn-default" href="%s">Cancel</a>' % self.cancel_url),
             )
         )
+
+        # Some initial values
+        if not self.instance.pk:
+            self.initial['start_time'] = datetime.now()
+            self.initial['date'] = datetime.now()
+
+        # Fix some widgets
+        self.fields['distance'].widget.attrs['step'] = "any"
+        self.fields['start_time'].widget.attrs['step'] = "1"
+        self.fields['duration'].widget.attrs['step'] = "1"

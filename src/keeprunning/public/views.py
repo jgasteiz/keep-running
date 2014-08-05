@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import TemplateView, ListView, CreateView, DeleteView
+from django.views.generic import (
+    TemplateView, ListView, CreateView, DeleteView, UpdateView, DetailView)
 
 from keeprunning.core.models import Activity
 
@@ -34,6 +35,22 @@ class CreateActivity(PublicMixin, CreateView):
     template_name = 'public/activity_create.html'
 
 create_activity = CreateActivity.as_view()
+
+
+class DetailActivity(PublicMixin, DetailView):
+    model = Activity
+    template_name = 'public/activity_detail.html'
+
+detail_activity = DetailActivity.as_view()
+
+
+class UpdateActivity(PublicMixin, UpdateView):
+    model = Activity
+    form_class = ActivityForm
+    success_url = reverse_lazy('public:activity_list')
+    template_name = 'public/activity_update.html'
+
+update_activity = UpdateActivity.as_view()
 
 
 class DeleteActivity(PublicMixin, DeleteView):

@@ -4,9 +4,16 @@
     <h1>Activity list</h1>
     <ul>
         {% for activity in activity_list %}
-        <li>{{ activity }} <a class="btn btn-danger btn-xs" href="{% url 'public:delete_activity' activity.pk %}">Delete</a></li>
+        <li>
+            {{ activity }}
+            <a class="btn btn-default btn-xs" href="{% url 'public:update_activity' activity.pk %}">Update</a>
+            <a class="btn btn-danger btn-xs" href="{% url 'public:delete_activity' activity.pk %}">Delete</a>
+            <a href="{% url 'public:detail_activity' activity.pk %}">See details</a>
+        </li>
         {% empty %}
         <li>No activities yet. <a href="{% url 'public:create_activity' %}">Create one</a>.</li>
         {% endfor %}
     </ul>
+
+    <h3>Add some graphs here?</h3>
 {% endblock content %}
