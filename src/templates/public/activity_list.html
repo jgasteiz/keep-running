@@ -2,6 +2,7 @@
 
 {% block content %}
     <h1>Activity list</h1>
+    <p><a href="{% url 'public:create_activity' %}">Register a new activity</a></p>
     <ul>
         {% for activity in activity_list %}
         <li>
@@ -10,8 +11,6 @@
             <a class="btn btn-danger btn-xs" href="{% url 'public:delete_activity' activity.pk %}">Delete</a>
             <a href="{% url 'public:detail_activity' activity.pk %}">See details</a>
         </li>
-        {% empty %}
-        <li>No activities yet. <a href="{% url 'public:create_activity' %}">Create one</a>.</li>
         {% endfor %}
     </ul>
 

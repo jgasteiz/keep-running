@@ -7,22 +7,7 @@ from crispy_forms.layout import Layout, Submit, HTML, Row, Div
 from crispy_forms.helper import FormHelper
 import floppyforms.__future__ as forms
 
-from keeprunning.core.models import Activity
-
-
-class FormHelperMixin(object):
-
-
-    def get_button_layout(self):
-        return Layout(
-            FormActions(
-                Submit('submit', 'Submit'),
-                HTML('<a class="btn btn-default" href="%s">Cancel</a>' % self.get_cancel_url()),
-            )
-        )
-
-    def get_cancel_url(self):
-        pass
+from core.models import Activity
 
 
 class ActivityForm(forms.ModelForm):

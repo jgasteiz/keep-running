@@ -3,7 +3,7 @@ from django.conf.urls import patterns, url
 from . import views
 
 urlpatterns = patterns(
-    'keeprunning.public.views',
+    'public.views',
     url(r'^$', views.Home.as_view(), name='home'),
     url(r'^activities$', 'activity_list', name='activity_list'),
     url(r'^activities/create/$', 'create_activity', name='create_activity'),
