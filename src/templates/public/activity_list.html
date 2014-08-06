@@ -1,8 +1,13 @@
 {% extends 'public/base.html' %}
+{% load staticfiles %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/bar-chart.css' %}">
+{% endblock extra_css %}
 
 {% block content %}
     <h1>Activity list</h1>
-    <p><a href="{% url 'public:create_activity' %}">Add an activity</a></p>
+    <p><a href="{% url 'public:create_activity' %}">Register a new activity</a></p>
     <ul>
         {% for activity in activity_list %}
         <li>
@@ -14,5 +19,9 @@
         {% endfor %}
     </ul>
 
-    <h3>Add some graphs here?</h3>
+    {% include 'public/graphs/bar_chart.html' %}
 {% endblock content %}
+
+{% block extra_js %}
+    <script src="{% static 'js/bar-chart.js' %}"></script>
+{% endblock extra_js %}

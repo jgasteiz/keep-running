@@ -6,6 +6,7 @@
     <title>Keep running</title>
     <link rel="stylesheet" href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock extra_css %}
 </head>
 <body>
     {% block navbar %}
@@ -38,13 +39,17 @@
         <hr/>
 
         <footer>
-            <p>&copy; Company 2014</p>
+            <p>&copy; Keep Running 2014</p>
         </footer>
 
     </div><!--/.container-->
 
     <script src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+    {% block extra_js %}{% endblock extra_js %}
 
 </body>
 </html>

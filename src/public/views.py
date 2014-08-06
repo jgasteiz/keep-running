@@ -1,11 +1,15 @@
+import datetime
+
 from django.conf import settings
+from django.core import serializers
 from django.core.urlresolvers import reverse_lazy
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import (
     TemplateView, ListView, CreateView, DeleteView, UpdateView, DetailView)
 
-from keeprunning.core.models import Activity
-from keeprunning.core.utils import generate_dummy_activities as generate_activities
+from core.models import Activity
+from core.utils import generate_dummy_activities as generate_activities
 
 from .forms import ActivityForm
 
@@ -71,3 +75,11 @@ def generate_dummy_activities(request):
         return render(request, 'public/debug/dummy_activities_generated.html')
     else:
         return redirect('public:home')
+
+
+def activity_json(request):
+    current_date = datetime.datetime.now()
+    date = datetime.date(current_date.year, current_date.month, 1)
+    response_data = serializers.serialize(
+        'json', Activity.objects.filter(date__gte=date).order_by('date'))
+    return HttpResponse(response_data, content_type="application/json")
