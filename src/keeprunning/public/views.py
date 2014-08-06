@@ -1,8 +1,11 @@
+from django.conf import settings
 from django.core.urlresolvers import reverse_lazy
+from django.shortcuts import render, redirect
 from django.views.generic import (
     TemplateView, ListView, CreateView, DeleteView, UpdateView, DetailView)
 
 from keeprunning.core.models import Activity
+from keeprunning.core.utils import generate_dummy_activities as generate_activities
 
 from .forms import ActivityForm
 
@@ -60,3 +63,11 @@ class DeleteActivity(PublicMixin, DeleteView):
     template_name = 'public/confirm_delete.html'
 
 delete_activity = DeleteActivity.as_view()
+
+
+def generate_dummy_activities(request):
+    if settings.DEBUG:
+        generate_activities()
+        return render(request, 'public/debug/dummy_activities_generated.html')
+    else:
+        return redirect('public:home')

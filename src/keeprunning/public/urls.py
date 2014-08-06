@@ -10,4 +10,6 @@ urlpatterns = patterns(
     url(r'^activities/detail/(?P<pk>[-\d]+)/$', 'detail_activity', name='detail_activity'),
     url(r'^activities/update/(?P<pk>[-\d]+)/$', 'update_activity', name='update_activity'),
     url(r'^activities/delete/(?P<pk>[-\d]+)/$', 'delete_activity', name='delete_activity'),
+
+    url(r'^activities/generate_dummy/$', 'generate_dummy_activities', name='generate_dummy_activities'),
 )

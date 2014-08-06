@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
+    {% block navbar %}
     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -21,12 +22,14 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'public:create_activity' %}">Add an activity</a></li>
                     <li><a href="{% url 'public:activity_list' %}">Activity List</a></li>
+                    <li><a href="{% url 'public:create_activity' %}">Add an activity</a></li>
+                    <li><a href="{% url 'public:generate_dummy_activities' %}">Generate dummy activities</a></li>
                 </ul>
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
     </div><!-- /.navbar -->
+    {% endblock navbar %}
 
     <div class="container">
 
