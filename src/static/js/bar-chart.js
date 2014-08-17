@@ -1,79 +1,103 @@
-var margin = {top: 40, right: 20, bottom: 120, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var keepr = keepr || {};
 
-var x = d3.scale.ordinal().rangeRoundBands([0, width], .1);
+(function() {
+    "use strict";
 
-var y = d3.scale.linear().range([height, 0]);
+    keepr.opts = {};
 
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
+    keepr.opts.activityListUrl = "/activities/json/";
 
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
+    if (window.location.search.indexOf('?date=') > -1) {
+        keepr.opts.activityListUrl = String(keepr.opts.activityListUrl + window.location.search);
+    }
 
-var tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-    return "<strong>Distance:</strong> <span style='color:red'>" + d.fields.distance + "</span>";
-  })
+    // Main container id, width and height.
+    keepr.opts.containerId = 'bar-chart';
+    keepr.opts.containerWidth = $('#' + keepr.opts.containerId).width();
+    keepr.opts.containerHeight = 500;
 
-var svg = d3.select("#bar-chart").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    // Define some options
+    keepr.opts.margin = {top: 40, right: 20, bottom: 120, left: 40};
+    keepr.opts.width = keepr.opts.containerWidth - keepr.opts.margin.left - keepr.opts.margin.right;
+    keepr.opts.height = keepr.opts.containerHeight - keepr.opts.margin.top - keepr.opts.margin.bottom;
 
-svg.call(tip);
+    // Axis functions
+    var x = d3.scale.ordinal().rangeRoundBands([0, keepr.opts.width], .1);
+    var y = d3.scale.linear().range([keepr.opts.height, 0]);
 
-d3.json("/activities/json/", function(error, data) {
+    // Both axis
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom");
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
 
-    x.domain(data.map(function(d) {
-        return d.fields.date;
-    }));
-    y.domain([0, d3.max(data, function(d) {
-        return d.fields.distance;
-    })]);
-
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis)
-        .selectAll("text")
-            .style("text-anchor", "end")
-            .attr("dx", "-.8em")
-            .attr("dy", ".15em")
-            .attr("transform", function(d) {
-                return "rotate(-65)"
+    // Tooltip
+    var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-12, 0])
+        .html(function(d) {
+            var distance = parseFloat(d.fields.distance).toFixed(2),
+                date = new Date(d.fields.date),
+                tooltipTemplate = $('#bar-chart-tooltip').text();
+            return _.template(tooltipTemplate, {
+                'distance': distance,
+                'date': date.getDate()
             });
+        });
 
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis)
-        .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("Distance (in km)");
+    // Main svg
+    var svg = d3.select("#bar-chart").append("svg")
+        .attr("width", keepr.opts.width + keepr.opts.margin.left + keepr.opts.margin.right)
+        .attr("height", keepr.opts.height + keepr.opts.margin.top + keepr.opts.margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + keepr.opts.margin.left + "," + keepr.opts.margin.top + ")");
 
-    svg.selectAll(".bar")
-        .data(data)
-        .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", function(d) { return x(d.fields.date); })
-        .attr("width", x.rangeBand())
-        .attr("y", function(d) { return y(d.fields.distance); })
-        .attr("height", function(d) { return height - y(d.fields.distance); })
-        .on('mouseover', tip.show)
-        .on('mouseout', tip.hide)
+    svg.call(tip);
 
-});
+    d3.json(keepr.opts.activityListUrl, function(error, data) {
 
-function type(d) {
-    d.fields.distance =+ d.fields.distance;
-    return d;
-}
+        x.domain(data.map(function(d) {
+            return d.fields.date;
+        }));
+        y.domain([0, d3.max(data, function(d) {
+            return d.fields.distance;
+        })]);
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + keepr.opts.height + ")")
+            .call(xAxis)
+            .selectAll("text")
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", ".15em")
+                .attr("transform", function(d) {
+                    return "rotate(-65)"
+                });
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -30)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text("Distance (in km)");
+
+        svg.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return x(d.fields.date); })
+            .attr("width", x.rangeBand())
+            .attr("y", function(d) { return y(d.fields.distance); })
+            .attr("height", function(d) { return keepr.opts.height - y(d.fields.distance); })
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide)
+
+    });
+
+})();
