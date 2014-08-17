@@ -6,8 +6,17 @@
 {% endblock extra_css %}
 
 {% block content %}
-    <h1>Activity list</h1>
+    <h1>Activity list - {{ month }}</h1>
+    <div class="btn-group pull-right">
+        <a class="btn btn-default" href="{% url 'public:activity_list' %}?date={{ previous_month }}">Previous Month</a>
+        {% if next_month %}
+            <a class="btn btn-default" href="{% url 'public:activity_list' %}?date={{ next_month }}">Next Month</a>
+        {% endif %}
+    </div>
     <p><a href="{% url 'public:create_activity' %}">Register a new activity</a></p>
+
+    {% include 'public/graphs/bar_chart.html' %}
+
     <ul>
         {% for activity in activity_list %}
         <li>
@@ -18,8 +27,6 @@
         </li>
         {% endfor %}
     </ul>
-
-    {% include 'public/graphs/bar_chart.html' %}
 {% endblock content %}
 
 {% block extra_js %}
