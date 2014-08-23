@@ -1,18 +1,31 @@
 import calendar
+import csv
 import datetime
+import logging
 
 from django.conf import settings
 from django.core import serializers
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import (
-    TemplateView, ListView, CreateView, DeleteView, UpdateView, DetailView)
+    TemplateView, ListView, CreateView, DeleteView, UpdateView, DetailView,
+    FormView)
 
 from core.models import Activity
 from core.utils import generate_dummy_activities as generate_activities
 
-from .forms import ActivityForm
+from .forms import ActivityForm, ImportDataForm
+
+ACTIVITY_MODEL_PROPERTIES = {
+    'date': 'Date',
+    'activity_type': 'Type',
+    'distance': 'Distance (km)',
+    'duration': 'Duration',
+    'calories': 'Calories Burned',
+    'activity_notes': 'Notes',
+}
+CSV_HEADERS = [ACTIVITY_MODEL_PROPERTIES[key] for key in ACTIVITY_MODEL_PROPERTIES]
 
 
 class PublicMixin(object):
@@ -90,6 +103,64 @@ class DeleteActivity(PublicMixin, DeleteView):
     template_name = 'public/confirm_delete.html'
 
 delete_activity = DeleteActivity.as_view()
+
+
+class ImportData(PublicMixin, FormView):
+    form_class = ImportDataForm
+    success_url = reverse_lazy('public:activity_list')
+    template_name = 'public/import_data.html'
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+
+            def _get_prop_value(csv_row, header_idxs, model_property_name):
+                return csv_row[header_idxs[ACTIVITY_MODEL_PROPERTIES[model_property_name]]]
+
+            def _get_duration(duration=[]):
+                if len(duration) == 2:
+                    return datetime.time(0, int(duration[0]), int(duration[1]))
+                if len(duration) == 3:
+                    return datetime.time(int(duration[0]), int(duration[1]), int(duration[2]))
+                else:
+                    return datetime.time(0, 5)
+
+            Activity.objects.all().delete()
+            csv_file = request.FILES['csv_file']
+
+            spamreader = csv.reader(csv_file, delimiter=',', quotechar='|')
+
+            csv_header_idxs = {}
+            for row in spamreader:
+                if spamreader.line_num == 1:
+                    for idx, col in enumerate(row):
+                        if col in CSV_HEADERS:
+                            csv_header_idxs[col] = idx
+                else:
+                    date_str = _get_prop_value(row, csv_header_idxs, 'date')
+                    date = datetime.datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S")
+                    duration_list = _get_prop_value(row, csv_header_idxs, 'duration').split(':')
+
+                    activity_type = _get_prop_value(row, csv_header_idxs, 'activity_type')
+                    duration = _get_duration(duration_list)
+                    distance = _get_prop_value(row, csv_header_idxs, 'distance')
+                    calories = _get_prop_value(row, csv_header_idxs, 'calories')
+                    activity_notes = _get_prop_value(row, csv_header_idxs, 'activity_notes')
+
+                    Activity.objects.create(
+                        date=date,
+                        activity_type=activity_type,
+                        duration=duration,
+                        distance=distance,
+                        calories=float(calories),
+                        activity_notes=activity_notes,
+                    )
+
+            return redirect(self.get_success_url())
+        else:
+            return redirect(reverse('public:import_data'))
+
+import_data = ImportData.as_view()
 
 
 def generate_dummy_activities(request):

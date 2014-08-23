@@ -6,6 +6,7 @@ urlpatterns = patterns(
     'public.views',
     url(r'^$', views.Home.as_view(), name='home'),
     url(r'^activities$', 'activity_list', name='activity_list'),
+    url(r'^activities/import_data/$', 'import_data', name='import_data'),
     url(r'^activities/json/$', 'activity_json', name='activity_json'),
     url(r'^activities/create/$', 'create_activity', name='create_activity'),
     url(r'^activities/detail/(?P<pk>[-\d]+)/$', 'detail_activity', name='detail_activity'),

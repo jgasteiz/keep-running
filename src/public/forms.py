@@ -52,3 +52,22 @@ class ActivityForm(forms.ModelForm):
         self.fields['distance'].widget.attrs['step'] = "any"
         self.fields['start_time'].widget.attrs['step'] = "1"
         self.fields['duration'].widget.attrs['step'] = "1"
+
+
+class ImportDataForm(forms.Form):
+    csv_file = forms.FileField(label='CSV file', help_text="""Import your exported
+        Runkeeper CSV file with your activities""")
+    cancel_url = reverse_lazy('public:activity_list')
+
+    def __init__(self, *args, **kwargs):
+        super(ImportDataForm, self).__init__(*args, **kwargs)
+        helper = FormHelper()
+        helper.form_class = 'form'
+        self.helper = helper
+        self.helper.layout = Layout(
+            Div('csv_file',),
+            FormActions(
+                Submit('submit', 'Submit'),
+                HTML('<a class="btn btn-default" href="%s">Cancel</a>' % self.cancel_url),
+            )
+        )

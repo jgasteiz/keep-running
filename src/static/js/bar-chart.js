@@ -5,6 +5,10 @@ var keepr = keepr || {};
 
     keepr.opts = {};
 
+    keepr.opts.months = [
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
     keepr.opts.activityListUrl = "/activities/json/";
 
     if (window.location.search.indexOf('?date=') > -1) {
@@ -40,10 +44,20 @@ var keepr = keepr || {};
         .html(function(d) {
             var distance = parseFloat(d.fields.distance).toFixed(2),
                 date = new Date(d.fields.date),
+                duration = d.fields.duration,
+                displayDate = keepr.opts.months[date.getMonth()] + ' ' +
+                    date.getDate() + ', ' + date.getFullYear(),
                 tooltipTemplate = $('#bar-chart-tooltip').text();
+
+            if (duration[0] == '0' && duration[1] == '0') {
+                duration = duration.replace('00:', '');
+            }
+
             return _.template(tooltipTemplate, {
                 'distance': distance,
-                'date': date.getDate()
+                'date': displayDate,
+                'duration': duration,
+                'calories': d.fields.calories
             });
         });
 
