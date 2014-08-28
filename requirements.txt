@@ -1,6 +1,10 @@
-https://www.djangoproject.com/download/1.7c2/tarball/
+Django==1.7c2
+Markdown==2.4.1
 django-crispy-forms==1.4.0
+django-filter==0.7
 django-floppyforms==1.2.0
+djangorestframework==2.3.14
+factory-boy==2.4.1
 gnureadline==6.3.3
 ipdb==0.8
 ipython==2.1.0

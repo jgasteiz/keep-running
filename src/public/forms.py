@@ -57,7 +57,7 @@ class ActivityForm(forms.ModelForm):
 class ImportDataForm(forms.Form):
     csv_file = forms.FileField(label='CSV file', help_text="""Import your exported
         Runkeeper CSV file with your activities""")
-    cancel_url = reverse_lazy('public:activity_list')
+    cancel_url = '#/activities'
 
     def __init__(self, *args, **kwargs):
         super(ImportDataForm, self).__init__(*args, **kwargs)

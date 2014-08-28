@@ -24,6 +24,8 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+APPEND_SLASH = True
+
 ALLOWED_HOSTS = []
 
 TEMPLATE_DIRS = (
@@ -45,6 +47,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'crispy_forms',
     'floppyforms',
+    'rest_framework',
     'core',
     'public',
 )

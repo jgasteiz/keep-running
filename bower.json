@@ -18,6 +18,10 @@
     "bootstrap": "",
     "underscore": "",
     "d3": "",
-    "d3-tip": ""
+    "d3-tip": "",
+    "angular": "~1.2.23",
+    "angular-route": "~1.2.23",
+    "angular-resource": "~1.2.23",
+    "angular-bootstrap": "~0.11.0"
   }
 }

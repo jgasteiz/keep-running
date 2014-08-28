@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block extra_css %}{% endblock extra_css %}
 </head>
-<body>
-    {% block navbar %}
+<body ng-app="keepRunning" ng-controller="MainCtrl">
     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -23,19 +22,18 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'public:activity_list' %}">Activity List</a></li>
-                    <li><a href="{% url 'public:create_activity' %}">Add an activity</a></li>
-                    <li><a href="{% url 'public:import_data' %}">Import data</a></li>
-                    <li><a href="{% url 'public:generate_dummy_activities' %}">Generate dummy activities</a></li>
+                    <li ng-class="{'active': isActive('/activities')}"><a href="#/activities">Activity List</a></li>
+                    <li ng-class="{'active': isActive('/new-activity')}"><a href="#/new-activity">Add an activity</a></li>
+{#                    <li><a href="{% url 'public:import_data' %}">Import data</a></li>#}
+{#                    <li><a href="{% url 'public:generate_dummy_activities' %}">Generate dummy activities</a></li>#}
                 </ul>
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
     </div><!-- /.navbar -->
-    {% endblock navbar %}
 
     <div class="container">
 
-        {% block content %}{% endblock content %}
+        <ng-view></ng-view>
 
         <hr/>
 
@@ -52,6 +50,22 @@
     <script src="{% static 'lib/underscore/underscore.js' %}"></script>
     <script src="{% static 'lib/d3/d3.min.js' %}"></script>
     <script src="{% static 'lib/d3-tip/index.js' %}"></script>
+
+    <script src="{% static 'lib/angular/angular.js' %}"></script>
+    <script src="{% static 'lib/angular-resource/angular-resource.js' %}"></script>
+    <script src="{% static 'lib/angular-route/angular-route.js' %}"></script>
+    <script src="{% static 'lib/angular-bootstrap/ui-bootstrap-tpls.js' %}"></script>
+
+    <script src="{% static 'js/app.js' %}"></script>
+
+    <script src="{% static 'js/directives/fieldDirectives.js' %}"></script>
+
+    <script src="{% static 'js/controllers/mainCtrl.js' %}"></script>
+    <script src="{% static 'js/controllers/homeCtrl.js' %}"></script>
+    <script src="{% static 'js/controllers/activitiesCtrl.js' %}"></script>
+    <script src="{% static 'js/controllers/newActivityCtrl.js' %}"></script>
+
+    <script src="{% static 'js/services/activityService.js' %}"></script>
 
     {% block extra_js %}{% endblock extra_js %}
 

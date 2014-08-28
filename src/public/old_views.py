@@ -42,6 +42,69 @@ class Home(PublicMixin, TemplateView):
     template_name = 'public/home.html'
 
 
+class ActivityList(PublicMixin, ListView):
+    model = Activity
+    template_name = 'public/activity_list.html'
+
+    date = None
+
+    def get_queryset(self):
+        queryset, self.date = get_activities(self.request, self.model)
+        return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super(ActivityList, self).get_context_data(*args, **kwargs)
+        next_date = self.date + datetime.timedelta(days=32)
+        previous_date = self.date - datetime.timedelta(days=self.date.day + 1)
+
+        next_month = None
+        if next_date < datetime.datetime.now():
+            next_month = '%s-%s' % (next_date.year, next_date.month)
+
+        ctx.update(dict(
+            month=calendar.month_name[self.date.month],
+            next_month=next_month,
+            previous_month='%s-%s' % (previous_date.year, previous_date.month),
+        ))
+        return ctx
+
+activity_list = ActivityList.as_view()
+
+
+class CreateActivity(PublicMixin, CreateView):
+    model = Activity
+    form_class = ActivityForm
+    success_url = reverse_lazy('public:activity_list')
+    template_name = 'public/activity_create.html'
+
+create_activity = CreateActivity.as_view()
+
+
+class DetailActivity(PublicMixin, DetailView):
+    model = Activity
+    template_name = 'public/activity_detail.html'
+
+detail_activity = DetailActivity.as_view()
+
+
+class UpdateActivity(PublicMixin, UpdateView):
+    model = Activity
+    form_class = ActivityForm
+    success_url = reverse_lazy('public:activity_list')
+    template_name = 'public/activity_update.html'
+
+update_activity = UpdateActivity.as_view()
+
+
+class DeleteActivity(PublicMixin, DeleteView):
+    model = Activity
+    form_class = ActivityForm
+    success_url = reverse_lazy('public:activity_list')
+    template_name = 'public/confirm_delete.html'
+
+delete_activity = DeleteActivity.as_view()
+
+
 class ImportData(PublicMixin, FormView):
     form_class = ImportDataForm
     success_url = reverse_lazy('public:activity_list')

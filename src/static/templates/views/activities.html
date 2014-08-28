@@ -1,0 +1,9 @@
+<h1>[[title]]</h1>
+
+<ul class="activity-list">
+    <li ng-repeat="activity in activities" class="activity-list__item">
+        <strong ng-bind="activity.date" class="activity-date"></strong>
+        <span ng-bind="activity.activity_type" class="activity-type"></span>
+        <span ng-bind="activity.distance" class="activity-distance"></span>
+    </li>
+</ul>
