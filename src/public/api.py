@@ -11,6 +11,3 @@ class ActivityViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all()
     permission_classes = (permissions.AllowAny,)
     serializer_class = ActivitySerializer
-
-    def list(self, request, *args, **kwargs):
-        return super(ActivityViewSet, self).list(request)

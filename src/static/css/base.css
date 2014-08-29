@@ -11,6 +11,16 @@ form .has-error p {
     margin: 10px 0;
 }
 
+.activity-list {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+}
+
+.activity-list__item {
+    padding: 5px 10px;
+}
+
 .activity-date,
 .activity-type,
 .activity-distance {
@@ -32,4 +42,14 @@ form .has-error p {
 }
 .activity-distance:after {
     content: "km";
+}
+
+.activity-delete {
+    cursor: pointer;
+    display: none;
+    margin-left: 10px;
+}
+
+.activity-list__item:hover .activity-delete {
+    display: inline-block;
 }

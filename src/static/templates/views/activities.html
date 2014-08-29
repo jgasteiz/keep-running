@@ -5,5 +5,6 @@
         <strong ng-bind="activity.date" class="activity-date"></strong>
         <span ng-bind="activity.activity_type" class="activity-type"></span>
         <span ng-bind="activity.distance" class="activity-distance"></span>
+        <a class="activity-delete" ng-click="deleteActivity([[activity.id]])">Delete</a>
     </li>
 </ul>

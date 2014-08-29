@@ -1,4 +1,4 @@
-kr.app.controller('NewActivityCtrl', ['$scope', '$log', '$location', 'activityService', function($scope, $log, $location, activityService) {
+kr.app.controller('NewActivityCtrl', ['$scope', '$log', '$location', 'ActivityFactory', function($scope, $log, $location, ActivityFactory) {
     $log.info("New Activity Ctrl");
 
     $scope.title = 'New activity';
@@ -29,7 +29,7 @@ kr.app.controller('NewActivityCtrl', ['$scope', '$log', '$location', 'activitySe
             return;
         }
 
-        var activityResource = new activityService.Activity({
+        var activityResource = new ActivityFactory({
             activity_type: this.activity.activityType,
             distance: this.activity.distance,
             calories: this.activity.calories,
