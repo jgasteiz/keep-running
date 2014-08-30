@@ -43,7 +43,7 @@
                     <input ng-model="activity.startTime" type="time" name="start_time" step="1" class="timeinput form-control" id="start_time">
                 </div>
             </div>
-            <div class="form-group" ng-class="{'has-error': submitted && form.distance.$error.required}">
+            <div class="form-group" ng-class="{'has-error': submitted && form.duration.$error.required}">
                 <label for="duration" class="control-label requiredField">Duration</label>
                 <div class="controls ">
                     <input ng-model="activity.duration" type="time" name="duration" required="" step="1" class="timeinput form-control" id="duration">

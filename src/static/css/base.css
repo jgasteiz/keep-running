@@ -18,7 +18,12 @@ form .has-error p {
 }
 
 .activity-list__item {
-    padding: 5px 10px;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.activity-list__item:hover {
+    color: #2A6496;
 }
 
 .activity-date,
@@ -44,12 +49,19 @@ form .has-error p {
     content: "km";
 }
 
-.activity-delete {
-    cursor: pointer;
+.activity-actions {
+    min-height: 20px;
+}
+
+.activity-actions a {
     display: none;
     margin-left: 10px;
 }
 
-.activity-list__item:hover .activity-delete {
+.activity-list__item:hover .activity-actions a {
     display: inline-block;
+}
+
+.activity-detail h2 {
+    text-align: center;
 }

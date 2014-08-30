@@ -1,10 +1,28 @@
-<h1>[[title]]</h1>
+<div class="row">
+    <div class="col-sm-3 text-right">
+        <strong>Last activities</strong>
+        <ul class="activity-list">
+            <li ng-repeat="activity in activities" ng-click="showDetail([[activity.id]])" class="activity-list__item">
+                <strong ng-bind="activity.date" class="activity-date"></strong>
+                <span ng-bind="activity.activity_type" class="activity-type"></span>
+                <span ng-bind="activity.distance" class="activity-distance"></span>
+                <div class="activity-actions">
+                    <a href="#">Edit</a>
+                    <a ng-click="deleteActivity([[activity.id]])">Delete</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 
-<ul class="activity-list">
-    <li ng-repeat="activity in activities" class="activity-list__item">
-        <strong ng-bind="activity.date" class="activity-date"></strong>
-        <span ng-bind="activity.activity_type" class="activity-type"></span>
-        <span ng-bind="activity.distance" class="activity-distance"></span>
-        <a class="activity-delete" ng-click="deleteActivity([[activity.id]])">Delete</a>
-    </li>
-</ul>
+    <div class="col-sm-9 activity-detail">
+        <h2 ng-show="selectedActivity === null">No activity selected</h2>
+        <div ng-show="selectedActivity !== null">
+            <p><strong>Activity type: </strong><span ng-bind="selectedActivity.activity_type"></span></p>
+            <p><strong>Calories: </strong><span ng-bind="selectedActivity.calories"></span></p>
+            <p><strong>Date: </strong><span ng-bind="selectedActivity.date"></span></p>
+            <p><strong>Distance: </strong><span ng-bind="selectedActivity.distance"></span>km</p>
+            <p><strong>Start time: </strong><span ng-bind="selectedActivity.start_time"></span></p>
+            <p><strong>Duration: </strong><span ng-bind="selectedActivity.duration"></span></p>
+        </div>
+    </div>
+</div>
