@@ -17,8 +17,12 @@ kr.app.config(['$routeProvider', function($routeProvider) {
             controller: 'ActivitiesCtrl'
         })
         .when('/new-activity', {
-            templateUrl: 'static/templates/views/new-activity.html',
+            templateUrl: 'static/templates/views/activity-form.html',
             controller: 'NewActivityCtrl'
+        })
+        .when('/update-activity/:activityId', {
+            templateUrl: 'static/templates/views/activity-form.html',
+            controller: 'UpdateActivityCtrl'
         })
         .otherwise({
             templateUrl: 'static/templates/views/404.html'

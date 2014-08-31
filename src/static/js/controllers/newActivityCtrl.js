@@ -1,8 +1,6 @@
 kr.app.controller('NewActivityCtrl', ['$scope', '$log', '$location', 'ActivityFactory', function($scope, $log, $location, ActivityFactory) {
     $log.info("New Activity Ctrl");
 
-    $scope.title = 'New activity';
-
     var _getDefaultValues = function() {
         var today = new Date(),
             year = today.getFullYear(),
@@ -14,12 +12,14 @@ kr.app.controller('NewActivityCtrl', ['$scope', '$log', '$location', 'ActivityFa
         }
 
         return {
-            activityType: 'running',
+            activity_type: 'running',
             date: year + '-' + month + '-' + day
         };
     };
 
-    $scope.activity = _getDefaultValues();
+    $scope.title = 'New activity';
+
+    $scope.activity = new ActivityFactory.Activity(_getDefaultValues());
 
     $scope.submit = function(form) {
 
@@ -29,16 +29,21 @@ kr.app.controller('NewActivityCtrl', ['$scope', '$log', '$location', 'ActivityFa
             return;
         }
 
-        var activityResource = new ActivityFactory({
+        ActivityFactory.ActivityResource({
             activity_type: this.activity.activityType,
             distance: this.activity.distance,
             calories: this.activity.calories,
             date: this.activity.date,
-            duration: this.activity.duration
+            start_time: this.activity.startTime,
+            duration: this.activity.duration,
+            activity_notes: this.activity.activityNotes
+        }).$save(function() {
+            $log.info('Activity created');
+            $location.path("/activities");
+        }, function() {
+            $log.warn('There was an error creating the activity');
+            $location.path("/activities");
         });
-
-        activityResource.$save();
-        $location.path("/activities");
     };
 
 }]);
