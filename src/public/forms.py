@@ -1,18 +1,30 @@
 from datetime import datetime
 
-from django.core.urlresolvers import reverse_lazy
-
 from crispy_forms.bootstrap import FormActions
-from crispy_forms.layout import Layout, Submit, HTML, Row, Div
+from crispy_forms.layout import Layout, Submit, HTML, Row, Div, Field
 from crispy_forms.helper import FormHelper
 import floppyforms.__future__ as forms
 
 from core.models import Activity
 
+Field.template = 'public/angular-field.html'
+
+
+def to_camel_case(snake_str):
+        components = snake_str.split('_')
+        return components[0] + "".join(x.title() for x in components[1:])
+
+
+def angularise_fields(fields, ng_model=None):
+    for field in fields:
+        ng_model_name = to_camel_case(field)
+        if ng_model:
+            ng_model_name = '%s.%s' % (ng_model, ng_model_name)
+        fields[field].widget.attrs['ng-model'] = ng_model_name
+    return fields
+
 
 class ActivityForm(forms.ModelForm):
-    cancel_url = reverse_lazy('public:activity_list')
-
     class Meta:
         model = Activity
 
@@ -20,44 +32,44 @@ class ActivityForm(forms.ModelForm):
         super(ActivityForm, self).__init__(*args, **kwargs)
         helper = FormHelper()
         helper.form_class = 'form'
+        helper.attrs['name'] = 'form'
+        helper.attrs['novalidate'] = ''
         self.helper = helper
         self.helper.layout = Layout(
             Row(
                 Div(
-                    'activity_type',
-                    'distance',
-                    'calories',
+                    Field('activity_type'),
+                    Field('distance', positive_integer=''),
+                    Field('calories', positive_integer=''),
                     css_class='col-md-6'
                 ),
                 Div(
-                    'date',
-                    'start_time',
-                    'duration',
+                    Field('date', past_date=''),
+                    Field('start_time'),
+                    Field('duration'),
                     css_class='col-md-6'
                 ),
             ),
-            Div('activity_notes',),
+            Div(
+                Field('activity_notes'),
+            ),
             FormActions(
-                Submit('submit', 'Submit'),
-                HTML('<a class="btn btn-default" href="%s">Cancel</a>' % self.cancel_url),
+                HTML('<button ng-click="submit(form)" class="btn btn-primary">Save</button>'),
+                HTML('<a href="#/activities" class="btn btn-default">Cancel</a>'),
             )
         )
-
-        # Some initial values
-        if not self.instance.pk:
-            self.initial['start_time'] = datetime.now()
-            self.initial['date'] = datetime.now()
 
         # Fix some widgets
         self.fields['distance'].widget.attrs['step'] = "any"
         self.fields['start_time'].widget.attrs['step'] = "1"
         self.fields['duration'].widget.attrs['step'] = "1"
 
+        self.fields = angularise_fields(fields=self.fields, ng_model='activity')
+
 
 class ImportDataForm(forms.Form):
     csv_file = forms.FileField(label='CSV file', help_text="""Import your exported
         Runkeeper CSV file with your activities""")
-    cancel_url = '#/activities'
 
     def __init__(self, *args, **kwargs):
         super(ImportDataForm, self).__init__(*args, **kwargs)
@@ -68,6 +80,6 @@ class ImportDataForm(forms.Form):
             Div('csv_file',),
             FormActions(
                 Submit('submit', 'Submit'),
-                HTML('<a class="btn btn-default" href="%s">Cancel</a>' % self.cancel_url),
+                HTML('<a class="btn btn-default" href="#/activities">Cancel</a>'),
             )
         )

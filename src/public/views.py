@@ -1,16 +1,12 @@
-import calendar
 import csv
 import datetime
-import logging
 
 from django.conf import settings
 from django.core import serializers
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import (
-    TemplateView, ListView, CreateView, DeleteView, UpdateView, DetailView,
-    FormView)
+from django.views.generic import TemplateView, FormView
 
 from core.models import Activity
 from core.utils import generate_dummy_activities as generate_activities
@@ -28,24 +24,32 @@ ACTIVITY_MODEL_PROPERTIES = {
 CSV_HEADERS = [ACTIVITY_MODEL_PROPERTIES[key] for key in ACTIVITY_MODEL_PROPERTIES]
 
 
-class PublicMixin(object):
+class Home(TemplateView):
+    template_name = 'public/index.html'
 
     def get_context_data(self, *args, **kwargs):
-        ctx = super(PublicMixin, self).get_context_data(*args, **kwargs)
+        ctx = super(Home, self).get_context_data(*args, **kwargs)
         ctx.update(
-            title=u'Keep Running'
+            title=u'Keep Running',
+            activity_form=ActivityForm(),
+            import_data_form=ImportDataForm()
         )
         return ctx
 
 
-class Home(PublicMixin, TemplateView):
-    template_name = 'public/home.html'
-
-
-class ImportData(PublicMixin, FormView):
+class ImportData(FormView):
     form_class = ImportDataForm
-    success_url = reverse_lazy('public:activity_list')
+    success_url = '/#/activities'
     template_name = 'public/import_data.html'
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super(ImportData, self).get_context_data(*args, **kwargs)
+        ctx.update(
+            title=u'Keep Running',
+            activity_form=ActivityForm(),
+            import_data_form=ImportDataForm()
+        )
+        return ctx
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
