@@ -1,6 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="keepRunning" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Keep running</title>
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block extra_css %}{% endblock extra_css %}
 </head>
-<body ng-app="keepRunning" ng-controller="MainCtrl">
+<body ng-controller="MainCtrl">
     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -33,7 +33,7 @@
 
     <div class="container">
 
-        {% block content %}{% endblock %}
+        <ng-view></ng-view>
 
         <hr/>
 
@@ -43,9 +43,32 @@
 
     </div><!--/.container-->
 
+    {% include 'public/js-templates.html' %}
+
     <script src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'lib/underscore/underscore.js' %}"></script>
+    <script src="{% static 'lib/d3/d3.min.js' %}"></script>
+    <script src="{% static 'lib/d3-tip/index.js' %}"></script>
+
+    <script src="{% static 'lib/angular/angular.js' %}"></script>
+    <script src="{% static 'lib/angular-resource/angular-resource.js' %}"></script>
+    <script src="{% static 'lib/angular-route/angular-route.js' %}"></script>
+    <script src="{% static 'lib/angular-bootstrap/ui-bootstrap-tpls.js' %}"></script>
+
+    <script src="{% static 'js/app.js' %}"></script>
+
+    <script src="{% static 'js/directives/djangoForm.js' %}"></script>
+    <script src="{% static 'js/directives/pastDate.js' %}"></script>
+    <script src="{% static 'js/directives/positiveInteger.js' %}"></script>
+
+    <script src="{% static 'js/controllers/mainCtrl.js' %}"></script>
+    <script src="{% static 'js/controllers/homeCtrl.js' %}"></script>
+    <script src="{% static 'js/controllers/activitiesCtrl.js' %}"></script>
+    <script src="{% static 'js/controllers/newActivityCtrl.js' %}"></script>
+    <script src="{% static 'js/controllers/updateActivityCtrl.js' %}"></script>
+
+    <script src="{% static 'js/services/activityService.js' %}"></script>
 
     {% block extra_js %}{% endblock extra_js %}
 
