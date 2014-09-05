@@ -1,6 +1,9 @@
-<script id="bar-chart-tooltip" type="text/x-handlebars-template">
-    <p>Distance: <span class="d3-tip-red"><%= distance %>km</span></p>
-    <p>Calories: <span class="d3-tip-red"><%= calories %>kcal</span></p>
-    <p>Duration: <span class="d3-tip-red"><%= duration %></span></p>
-    <p>Date: <span class="d3-tip-red"><%= date %></span></p>
+{% load crispy_forms_tags %}
+
+<script id="activity-form" type="text/html">
+    {% crispy activity_form %}
+</script>
+
+<script id="import-data-form" type="text/html">
+    {% crispy import_data_form %}
 </script>
