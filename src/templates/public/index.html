@@ -33,6 +33,8 @@
 
     <div class="container">
 
+        <alert ng-repeat="message in messages" type="[[message.type]]" close="closeAlert($index)">[[message.msg]]</alert>
+
         <ng-view></ng-view>
 
         <hr/>

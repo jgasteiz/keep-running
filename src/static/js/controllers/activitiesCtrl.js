@@ -1,4 +1,4 @@
-kr.app.controller('ActivitiesCtrl', ['$scope', '$log', '$location', 'ActivityFactory', function($scope, $log, $location, ActivityFactory) {
+kr.app.controller('ActivitiesCtrl', ['$scope', '$log', '$modal', '$location', 'ActivityFactory', function($scope, $log, $modal, $location, ActivityFactory) {
     $log.info("Activities Ctrl");
 
     var _fetchActivities = function() {
@@ -7,13 +7,41 @@ kr.app.controller('ActivitiesCtrl', ['$scope', '$log', '$location', 'ActivityFac
         });
     };
 
+    var _addMessage = function(type, message) {
+        $scope.messages.push({
+            type: type,
+            msg: message
+        });
+    };
+
     $scope.selectedActivity = null;
 
     $scope.deleteActivity = function(activityId) {
-        ActivityFactory.ActivityResource.delete({id: activityId}, function() {
-            _fetchActivities();
-        }, function(data) {
-            $scope.messages = data;
+
+        $modal.open({
+            templateUrl: 'static/templates/modal.html',
+            size: 'sm',
+            controller: function ($scope, $modalInstance) {
+
+                $scope.title = 'Delete activity';
+                $scope.content = 'Are you sure you want to delete this activity?';
+
+                $scope.ok = function () {
+                    ActivityFactory.ActivityResource.delete({id: activityId}, function() {
+                        _fetchActivities();
+                        _addMessage('success', 'Activity deleted');
+                        $modalInstance.close();
+                    },
+                    function(data) {
+                        _addMessage('danger', data);
+                        $modalInstance.close();
+                    });
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            }
         });
     };
 
@@ -25,7 +53,7 @@ kr.app.controller('ActivitiesCtrl', ['$scope', '$log', '$location', 'ActivityFac
         ActivityFactory.ActivityResource.show({id: activityId}, function(activity) {
             $scope.selectedActivity = new ActivityFactory.Activity(activity);
         }, function(data) {
-            $scope.messages = data;
+            _addMessage('danger', data);
         });
     };
 
