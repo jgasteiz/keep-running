@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from crispy_forms.bootstrap import FormActions
 from crispy_forms.layout import Layout, Submit, HTML, Row, Div, Field
 from crispy_forms.helper import FormHelper
@@ -8,6 +6,7 @@ import floppyforms.__future__ as forms
 from core.models import Activity
 
 Field.template = 'public/angular-field.html'
+DATE_FIELD_TEMPLATE = 'public/ui-date-field.html'
 
 
 def to_camel_case(snake_str):
@@ -44,7 +43,7 @@ class ActivityForm(forms.ModelForm):
                     css_class='col-md-6'
                 ),
                 Div(
-                    Field('date', past_date=''),
+                    Field('date', template=DATE_FIELD_TEMPLATE, past_date=''),
                     Field('start_time'),
                     Field('duration'),
                     css_class='col-md-6'

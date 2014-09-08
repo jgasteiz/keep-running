@@ -1,0 +1,32 @@
+{% load crispy_forms_field %}
+{% load crispy_forms_filters %}
+{% load format %}
+<div id="div_{{ field.auto_id }}" class="form-group">
+
+    {% if field.label and form_show_labels %}
+        <label for="{{ field.id_for_label }}" class="control-label {{ label_class }}{% if field.field.required %} requiredField{% endif %}">
+            {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+        </label>
+    {% endif %}
+
+    <div class="controls {{ field_class }}" dates model="{{ field.field.widget.attrs|get_ng_model }}">
+        <p class="input-group">
+            <input type="text"
+                 class="form-control"
+                 name="{{ field.html_name }}"
+                 datepicker-popup="dd-MM-yyyy"
+                 is-open="opened"
+                 date-disabled="disabled(date, mode)"
+                 ng-required="true"
+                 close-text="Close"
+                 {{ field.field.widget.attrs|flatatt }} />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+    </div>
+
+    {% if field.field.required %}
+    <p ng-show="submitted && form['{{ field.name }}'].$error.required" class="error-message">This field is required.</p>
+    {% endif %}
+</div>

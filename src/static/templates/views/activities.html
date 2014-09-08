@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-sm-3 text-right">
         <strong>Last activities</strong>
+
         <ul class="activity-list">
             <li ng-repeat="activity in activities" ng-click="showDetail([[activity.id]])" class="activity-list__item">
                 <strong ng-bind="activity.date" class="activity-date"></strong>
