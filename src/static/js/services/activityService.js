@@ -65,6 +65,9 @@ kr.app.factory('ActivityFactory', ['$resource', function($resource) {
             query: { method: 'GET', isArray: true },
             create: { method: 'POST' }
         }),
+        Stats: $resource('/_api/stats', {}, {
+            query: { method: 'GET', isArray: true },
+        }),
         Activity: Activity,
         ActivityUtils: ActivityUtils
     }

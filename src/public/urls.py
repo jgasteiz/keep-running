@@ -7,6 +7,7 @@ from . import views, api
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'activities', api.ActivityViewSet)
+router.register(r'stats', api.StatViewSet, 'stats')
 
 
 urlpatterns = patterns(

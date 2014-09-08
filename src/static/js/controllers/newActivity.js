@@ -1,4 +1,4 @@
-kr.app.controller('NewActivityCtrl', ['$scope', '$log', '$location', 'ActivityFactory', function($scope, $log, $location, ActivityFactory) {
+kr.app.controller('NewActivity', ['$scope', '$log', '$location', 'ActivityFactory', function($scope, $log, $location, ActivityFactory) {
     $log.info("New Activity Ctrl");
 
     $scope.title = 'New activity';

@@ -1,4 +1,4 @@
-kr.app.controller('ActivitiesCtrl', ['$scope', '$log', '$modal', '$location', 'ActivityFactory', function($scope, $log, $modal, $location, ActivityFactory) {
+kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'ActivityFactory', function($scope, $log, $modal, $location, ActivityFactory) {
     $log.info("Activities Ctrl");
 
     var _fetchActivities = function() {

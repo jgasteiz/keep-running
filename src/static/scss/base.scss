@@ -1,0 +1,34 @@
+body {
+	margin-top: 80px;
+}
+
+p.error-message {
+	color: #A94442;
+	margin: 10px 0;
+}
+
+.form-control {
+	.ng-invalid {
+		border-color: #A94442;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	}
+}
+
+.section-title {
+	color: #888;
+	display: block;
+	font-size: 1.4em;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+
+.subsection-title {
+	display: block;
+	font-size: 1.2em;
+	font-weight: 700;
+}
+
+@import 'header';
+@import 'stats';
+@import 'activities';

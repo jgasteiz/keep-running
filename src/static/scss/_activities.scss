@@ -1,0 +1,55 @@
+.activity-list {
+	display: inline-block;
+	list-style: none;
+	padding: 0;
+}
+
+.activity-list__item {
+	cursor: pointer;
+	padding: 5px 0;
+
+	&:hover {
+		color: #2A6496;
+
+		.activity-actions a {
+			display: inline-block;
+		}
+	}
+}
+
+.activity-actions {
+	min-height: 20px;
+
+	a {
+		display: none;
+		margin-left: 10px;
+	}
+}
+
+.activity-date,
+.activity-type,
+.activity-distance {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+.activity-date {
+	font-size: 0.8em;
+}
+.activity-type {
+	font-size: 1.2em;
+	text-transform: capitalize;
+}
+.activity-distance {
+	color: #999;
+	font-size: 0.8em;
+	margin-left: 8px;
+
+	&:after {
+		content: "km";
+	}
+}
+
+.activity-detail h2 {
+	text-align: center;
+}

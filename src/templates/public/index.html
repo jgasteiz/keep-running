@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block extra_css %}{% endblock extra_css %}
 </head>
-<body ng-controller="MainCtrl">
+<body ng-controller="Main">
     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -18,14 +18,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{% url 'public:home' %}">{{ title }}</a>
+                <a class="navbar-brand" href="/">{{ title }}</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li ng-class="{'active': isActive('/activities')}"><a href="#/activities">Activity List</a></li>
-                    <li ng-class="{'active': isActive('/new-activity')}"><a href="#/new-activity">Add an activity</a></li>
-                    <li><a href="{% url 'public:import_data' %}">Import data</a></li>
-                    <li><a href="{% url 'public:generate_dummy_activities' %}">Generate dummy activities</a></li>
+                    <li ng-class="{'active': isActive(['/', '/activities'])}"><a href="/">Me</a></li>
+                    <li ng-class="{'active': isActive(['/new-activity'])}"><a href="#/new-activity">Log an activity</a></li>
+{#                    <li><a href="{% url 'public:import_data' %}">Import data</a></li>#}
+{#                    <li><a href="{% url 'public:generate_dummy_activities' %}">Generate dummy activities</a></li>#}
                 </ul>
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
@@ -33,7 +33,34 @@
 
     <div class="container">
 
-        <alert ng-repeat="message in messages" type="[[message.type]]" close="closeAlert($index)">[[message.msg]]</alert>
+        <div class="profile-header" ng-show="isActive(['/', '/activities'])">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h3>User name</h3>
+                </div>
+
+                <div class="col-sm-9">
+                    <alert ng-repeat="message in messages" type="[[message.type]]" close="closeAlert($index)">[[message.msg]]</alert>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <li ng-class="{'active': isActive(['/'])}">
+                            <a class="text-center" href="/">
+                                <span class="glyphicon glyphicon-home"></span>
+                                <span class="title">Dashboard</span>
+                            </a>
+                        </li>
+                        <li ng-class="{'active': isActive(['/activities'])}">
+                            <a class="text-center" href="#/activities">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                                <span class="title">Activities</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr/>
+        </div>
 
         <ng-view></ng-view>
 
@@ -64,11 +91,11 @@
     <script src="{% static 'js/directives/pastDate.js' %}"></script>
     <script src="{% static 'js/directives/positiveInteger.js' %}"></script>
 
-    <script src="{% static 'js/controllers/mainCtrl.js' %}"></script>
-    <script src="{% static 'js/controllers/homeCtrl.js' %}"></script>
-    <script src="{% static 'js/controllers/activitiesCtrl.js' %}"></script>
-    <script src="{% static 'js/controllers/newActivityCtrl.js' %}"></script>
-    <script src="{% static 'js/controllers/updateActivityCtrl.js' %}"></script>
+    <script src="{% static 'js/controllers/main.js' %}"></script>
+    <script src="{% static 'js/controllers/dashboard.js' %}"></script>
+    <script src="{% static 'js/controllers/activities.js' %}"></script>
+    <script src="{% static 'js/controllers/newActivity.js' %}"></script>
+    <script src="{% static 'js/controllers/updateActivity.js' %}"></script>
 
     <script src="{% static 'js/services/activityService.js' %}"></script>
 

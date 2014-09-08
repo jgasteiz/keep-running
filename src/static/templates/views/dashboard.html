@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-sm-3">
+        <span class="section-title">Dashboard</span>
+
+        <span class="subsection-title">Info</span>
+        <p>Some info here</p>
+
+        <span class="subsection-title">Stats</span>
+        <ul class="stats-list">
+            <li ng-repeat="stat in stats">
+                <div class="stat-title" ng-bind="stat.title"></div>
+                <div class="stat-value" ng-bind="stat.value"></div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-sm-9 activity-detail">
+        <h2>Fancy graphs!</h2>
+    </div>
+</div>

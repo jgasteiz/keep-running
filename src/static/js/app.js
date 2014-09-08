@@ -9,20 +9,20 @@ kr.app = angular.module("keepRunning",
 kr.app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'static/templates/views/home.html',
-            controller: 'HomeCtrl'
+            templateUrl: 'static/templates/views/dashboard.html',
+            controller: 'Dashboard'
         })
         .when('/activities', {
             templateUrl: 'static/templates/views/activities.html',
-            controller: 'ActivitiesCtrl'
+            controller: 'Activities'
         })
         .when('/new-activity', {
             templateUrl: 'static/templates/views/activity-form.html',
-            controller: 'NewActivityCtrl'
+            controller: 'NewActivity'
         })
         .when('/update-activity/:activityId', {
             templateUrl: 'static/templates/views/activity-form.html',
-            controller: 'UpdateActivityCtrl'
+            controller: 'UpdateActivity'
         })
         .otherwise({
             templateUrl: 'static/templates/views/404.html'

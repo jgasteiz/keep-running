@@ -1,4 +1,4 @@
-kr.app.controller('UpdateActivityCtrl', ['$scope', '$log', '$location', '$routeParams', 'ActivityFactory', function($scope, $log, $location, $routeParams, ActivityFactory) {
+kr.app.controller('UpdateActivity', ['$scope', '$log', '$location', '$routeParams', 'ActivityFactory', function($scope, $log, $location, $routeParams, ActivityFactory) {
     $log.info("Update Activity Ctrl");
 
     /**
