@@ -26,6 +26,14 @@ kr.app.factory('ActivityFactory', ['$resource', function($resource) {
     };
 
     /**
+     * Returns the Activity date in the format dd-mm-yyyy.
+     * @returns {string}
+     */
+    Activity.prototype.getDate = function() {
+        return this.date.getFullYear() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getDate();
+    };
+
+    /**
      * Utils class for activities.
      *
      * @constructor
