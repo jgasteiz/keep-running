@@ -3,14 +3,13 @@
         <strong>Last activities</strong>
 
         <ul class="activity-list">
-            <li ng-repeat="activity in activities" ng-click="showDetail([[activity.id]])" class="activity-list__item">
+            <li ng-repeat="activity in activities"
+                ng-click="showDetail([[activity.id]])"
+                ng-class="{'activity-list__item--is-active': isActivitySelected(activity)}"
+                class="activity-list__item">
                 <strong ng-bind="activity.date" class="activity-date"></strong>
                 <span ng-bind="activity.activityType" class="activity-type"></span>
                 <span ng-bind="activity.getDistance()" class="activity-distance"></span>
-                <div class="activity-actions">
-                    <a ng-click="updateActivity([[activity.id]])">Edit</a>
-                    <a ng-click="deleteActivity([[activity.id]])">Delete</a>
-                </div>
             </li>
         </ul>
     </div>
@@ -25,6 +24,10 @@
             <p><strong>Start time: </strong><span ng-bind="selectedActivity.startTime"></span></p>
             <p><strong>Duration: </strong><span ng-bind="selectedActivity.duration"></span></p>
             <p><strong>Activity notes: </strong><span ng-bind="selectedActivity.activityNotes"></span></p>
+            <div class="activity-actions">
+                <a class="btn btn-default" ng-click="updateActivity([[selectedActivity.id]])">Edit</a>
+                <a class="btn btn-danger" ng-click="deleteActivity([[selectedActivity.id]])">Delete</a>
+            </div>
         </div>
     </div>
 </div>

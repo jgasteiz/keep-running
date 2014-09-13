@@ -48,17 +48,22 @@ p.error-message {
 
 .activity-list__item {
   cursor: pointer;
-  padding: 5px 0; }
+  margin: 5px 0;
+  padding: 5px; }
   .activity-list__item:hover {
     color: #2A6496; }
-    .activity-list__item:hover .activity-actions a {
-      display: inline-block; }
 
-.activity-actions {
-  min-height: 20px; }
-  .activity-actions a {
-    display: none;
-    margin-left: 10px; }
+.activity-list__item--is-active {
+  background-color: #428BCA;
+  color: #fff;
+  font-weight: 300;
+  border-radius: 4px; }
+  .activity-list__item--is-active strong {
+    font-weight: 300; }
+  .activity-list__item--is-active .activity-distance {
+    color: #eee; }
+  .activity-list__item--is-active:hover {
+    color: #fff; }
 
 .activity-date,
 .activity-type,

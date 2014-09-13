@@ -22,18 +22,20 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li ng-class="{'active': isActive(['/', '/activities'])}"><a href="/">Me</a></li>
-                    <li ng-class="{'active': isActive(['/new-activity'])}"><a href="#/new-activity">Log an activity</a></li>
-{#                    <li><a href="{% url 'public:import_data' %}">Import data</a></li>#}
-{#                    <li><a href="{% url 'public:generate_dummy_activities' %}">Generate dummy activities</a></li>#}
+                    <li ng-class="{'active': isMenuItemActive(['/', '/activities'])}">
+                        <a href="/">Me</a>
+                    </li>
+                    <li ng-class="{'active': isMenuItemActive(['/new-activity'])}">
+                        <a href="#/new-activity">Log an activity</a>
+                    </li>
                 </ul>
-            </div><!-- /.nav-collapse -->
-        </div><!-- /.container -->
-    </div><!-- /.navbar -->
+            </div>
+        </div>
+    </div>
 
     <div class="container">
 
-        <div class="profile-header" ng-show="isActive(['/', '/activities', '/import-data'])">
+        <div class="profile-header" ng-show="isMenuItemActive(['/', '/activities', '/import-data'])">
             <div class="row">
                 <div class="col-sm-3">
                     <h3>User name</h3>
@@ -46,19 +48,19 @@
                            ng-bind="message.msg"></alert>
 
                     <ul class="nav nav-pills" role="tablist">
-                        <li ng-class="{'active': isActive(['/'])}">
+                        <li ng-class="{'active': isMenuItemActive(['/'])}">
                             <a class="text-center" href="/">
                                 <span class="glyphicon glyphicon-home"></span>
                                 <span class="title">Dashboard</span>
                             </a>
                         </li>
-                        <li ng-class="{'active': isActive(['/activities'])}">
+                        <li ng-class="{'active': isMenuItemActive(['/activities'])}">
                             <a class="text-center" href="#/activities">
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 <span class="title">Activities</span>
                             </a>
                         </li>
-                        <li ng-class="{'active': isActive(['/import-data'])}">
+                        <li ng-class="{'active': isMenuItemActive(['/import-data'])}">
                             <a class="text-center" href="#/import-data">
                                 <span class="glyphicon glyphicon-import"></span>
                                 <span class="title">Import data</span>

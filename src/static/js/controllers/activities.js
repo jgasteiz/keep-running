@@ -14,8 +14,6 @@ kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'Activ
         });
     };
 
-    $scope.selectedActivity = null;
-
     $scope.deleteActivity = function(activityId) {
 
         $modal.open({
@@ -51,7 +49,7 @@ kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'Activ
 
     $scope.showDetail = function(activityId) {
         ActivityFactory.ActivityResource.show({id: activityId}, function(activity) {
-            $scope.selectedActivity = new ActivityFactory.Activity(activity);
+            $scope.setActivity(new ActivityFactory.Activity(activity));
         }, function(data) {
             _addMessage('danger', data);
         });
