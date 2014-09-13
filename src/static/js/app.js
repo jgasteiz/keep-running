@@ -33,3 +33,10 @@ kr.app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'static/templates/views/404.html'
         })
 }]);
+
+kr.app.constant('config', {
+    routes: {
+        me: ['/', '/activities', '/import-data'],
+        log: ['/new-activity']
+    }
+});

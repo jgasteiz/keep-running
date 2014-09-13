@@ -1,38 +1,29 @@
 .activity-list {
-	display: inline-block;
 	list-style: none;
 	padding: 0;
 }
 
 .activity-list__item {
 	cursor: pointer;
+	display: block;
+	float: none !important;
 	margin: 5px 0;
-	padding: 5px;
 
-	&:hover {
-		color: #2A6496;
-	}
-}
-.activity-list__item--is-active {
-	background-color: #428BCA;
-	color: #fff;
-	font-weight: 300;
-	border-radius: 4px;
-
-	strong {
+	&.active {
 		font-weight: 300;
-	}
 
-	.activity-distance {
-		color: #eee;
-	}
-	&:hover {
-		color: #fff;
+		strong {
+			font-weight: 300;
+		}
+
+		.activity-distance {
+			color: #eee;
+		}
 	}
 }
 
 .activity-actions {
-
+	margin: 20px 0;
 }
 
 .activity-date,
@@ -46,13 +37,12 @@
 	font-size: 0.8em;
 }
 .activity-type {
-	font-size: 1.2em;
 	text-transform: capitalize;
 }
 .activity-distance {
 	color: #999;
+	display: block;
 	font-size: 0.8em;
-	margin-left: 8px;
 
 	&:after {
 		content: "km";

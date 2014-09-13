@@ -1,15 +1,18 @@
 <div class="row">
-    <div class="col-sm-3 text-right">
+
+    <div role="navigation" class="col-sm-3 text-right sidebar">
         <strong>Last activities</strong>
 
-        <ul class="activity-list">
+        <ul class="activity-list nav nav-pills">
             <li ng-repeat="activity in activities"
                 ng-click="showDetail([[activity.id]])"
-                ng-class="{'activity-list__item--is-active': isActivitySelected(activity)}"
+                ng-class="{'active': isActivitySelected(activity)}"
                 class="activity-list__item">
-                <strong ng-bind="activity.date" class="activity-date"></strong>
-                <span ng-bind="activity.activityType" class="activity-type"></span>
-                <span ng-bind="activity.getDistance()" class="activity-distance"></span>
+                <a>
+                    <strong ng-bind="activity.date" class="activity-date"></strong>
+                    <span ng-bind="activity.activityType" class="activity-type"></span>
+                    <span ng-bind="activity.getDistance()" class="activity-distance"></span>
+                </a>
             </li>
         </ul>
     </div>

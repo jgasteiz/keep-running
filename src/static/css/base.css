@@ -1,89 +1,147 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/base\.scss}line{font-family:\000032}}
+html,
 body {
-  margin-top: 80px; }
+  background-color: #f0f0f0;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/base\.scss}line{font-family:\000036}}
+body {
+  margin-top: 80px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/base\.scss}line{font-family:\0000310}}
+[role="main"] {
+  background-color: #fff;
+  max-width: 900px;
+  padding: 15px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/base\.scss}line{font-family:\0000316}}
+.sidebar[role="navigation"] {
+  border-right: 1px solid #eee;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/base\.scss}line{font-family:\0000320}}
 p.error-message {
   color: #A94442;
-  margin: 10px 0; }
+  margin: 10px 0;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/base\.scss}line{font-family:\0000326}}
 .form-control .ng-invalid {
   border-color: #A94442;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/base\.scss}line{font-family:\0000333}}
 .section-title {
   color: #888;
   display: block;
   font-size: 1.4em;
   margin-bottom: 10px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/base\.scss}line{font-family:\0000341}}
 .subsection-title {
   display: block;
   font-size: 1.2em;
-  font-weight: 700; }
+  font-weight: 700;
+}
 
-.nav-pills > li > a {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_header\.scss}line{font-family:\000032}}
+.profile-header .nav-pills > li > a {
   margin-right: 10px;
   min-width: 120px;
-  padding: 10px 20px; }
-.nav-pills .glyphicon {
-  font-size: 1.4em; }
-.nav-pills .title {
-  display: block; }
+  padding: 10px 20px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_header\.scss}line{font-family:\000037}}
+.profile-header .nav-pills .glyphicon {
+  font-size: 1.4em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_header\.scss}line{font-family:\0000310}}
+.profile-header .nav-pills .title {
+  display: block;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_stats\.scss}line{font-family:\000031}}
 .stats-list {
   list-style: none;
-  padding-left: 0; }
-  .stats-list li {
-    margin-bottom: 5px; }
+  padding-left: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_stats\.scss}line{font-family:\000035}}
+.stats-list li {
+  margin-bottom: 5px;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_stats\.scss}line{font-family:\0000310}}
 .stat-title {
   color: #888;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\000031}}
 .activity-list {
-  display: inline-block;
   list-style: none;
-  padding: 0; }
+  padding: 0;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\000036}}
 .activity-list__item {
   cursor: pointer;
+  display: block;
+  float: none !important;
   margin: 5px 0;
-  padding: 5px; }
-  .activity-list__item:hover {
-    color: #2A6496; }
-
-.activity-list__item--is-active {
-  background-color: #428BCA;
-  color: #fff;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000312}}
+.activity-list__item.active {
   font-weight: 300;
-  border-radius: 4px; }
-  .activity-list__item--is-active strong {
-    font-weight: 300; }
-  .activity-list__item--is-active .activity-distance {
-    color: #eee; }
-  .activity-list__item--is-active:hover {
-    color: #fff; }
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000315}}
+.activity-list__item.active strong {
+  font-weight: 300;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000319}}
+.activity-list__item.active .activity-distance {
+  color: #eee;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000325}}
+.activity-actions {
+  margin: 20px 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000331}}
 .activity-date,
 .activity-type,
 .activity-distance {
   display: inline-block;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000336}}
 .activity-date {
-  font-size: 0.8em; }
+  font-size: 0.8em;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000339}}
 .activity-type {
-  font-size: 1.2em;
-  text-transform: capitalize; }
+  text-transform: capitalize;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000342}}
 .activity-distance {
   color: #999;
+  display: block;
   font-size: 0.8em;
-  margin-left: 8px; }
-  .activity-distance:after {
-    content: "km"; }
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000347}}
+.activity-distance:after {
+  content: "km";
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000352}}
 .activity-detail h2 {
-  text-align: center; }
+  text-align: center;
+}

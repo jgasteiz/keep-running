@@ -1,4 +1,4 @@
-kr.app.controller('Main', ['$scope', '$log', '$location', function($scope, $log, $location) {
+kr.app.controller('Main', ['$scope', '$log', '$location', 'config', function($scope, $log, $location, config) {
     $log.info("Main controller");
 
     /**
@@ -35,7 +35,13 @@ kr.app.controller('Main', ['$scope', '$log', '$location', function($scope, $log,
         $scope.messages.splice(index, 1);
     };
 
-    $scope.isMenuItemActive = function(routes) {
+    $scope.isMenuItemActive = function(route, multipleRoutes) {
+        var routes = [];
+        if (multipleRoutes) {
+            routes = config.routes[route];
+        } else {
+            routes.push(route);
+        }
         for (var i in routes) {
             if ($location.path() === routes[i]) {
                 return true;
