@@ -33,14 +33,17 @@
 
     <div class="container">
 
-        <div class="profile-header" ng-show="isActive(['/', '/activities'])">
+        <div class="profile-header" ng-show="isActive(['/', '/activities', '/import-data'])">
             <div class="row">
                 <div class="col-sm-3">
                     <h3>User name</h3>
                 </div>
 
                 <div class="col-sm-9">
-                    <alert ng-repeat="message in messages" type="[[message.type]]" close="closeAlert($index)">[[message.msg]]</alert>
+                    <alert ng-repeat="message in messages"
+                           type="[[message.type]]"
+                           close="removeMessage($index)"
+                           ng-bind="message.msg"></alert>
 
                     <ul class="nav nav-pills" role="tablist">
                         <li ng-class="{'active': isActive(['/'])}">
@@ -53,6 +56,12 @@
                             <a class="text-center" href="#/activities">
                                 <span class="glyphicon glyphicon-calendar"></span>
                                 <span class="title">Activities</span>
+                            </a>
+                        </li>
+                        <li ng-class="{'active': isActive(['/import-data'])}">
+                            <a class="text-center" href="#/import-data">
+                                <span class="glyphicon glyphicon-import"></span>
+                                <span class="title">Import data</span>
                             </a>
                         </li>
                     </ul>
@@ -88,12 +97,14 @@
 
     <script src="{% static 'js/directives/datepicker.js' %}"></script>
     <script src="{% static 'js/directives/djangoForm.js' %}"></script>
+    <script src="{% static 'js/directives/fileModel.js' %}"></script>
     <script src="{% static 'js/directives/pastDate.js' %}"></script>
     <script src="{% static 'js/directives/positiveInteger.js' %}"></script>
 
-    <script src="{% static 'js/controllers/main.js' %}"></script>
-    <script src="{% static 'js/controllers/dashboard.js' %}"></script>
     <script src="{% static 'js/controllers/activities.js' %}"></script>
+    <script src="{% static 'js/controllers/dashboard.js' %}"></script>
+    <script src="{% static 'js/controllers/importData.js' %}"></script>
+    <script src="{% static 'js/controllers/main.js' %}"></script>
     <script src="{% static 'js/controllers/newActivity.js' %}"></script>
     <script src="{% static 'js/controllers/updateActivity.js' %}"></script>
 

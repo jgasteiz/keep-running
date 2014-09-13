@@ -1,7 +1,8 @@
 var kr = kr || {};
 
 kr.app = angular.module("keepRunning",
-    ['ui.bootstrap', 'ngRoute', 'ngResource'], function($interpolateProvider) {
+['ui.bootstrap', 'ngRoute', 'ngResource'],
+function($interpolateProvider, $httpProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
@@ -19,6 +20,10 @@ kr.app.config(['$routeProvider', function($routeProvider) {
         .when('/new-activity', {
             templateUrl: 'static/templates/views/activity-form.html',
             controller: 'NewActivity'
+        })
+        .when('/import-data', {
+            templateUrl: 'static/templates/views/import-data-form.html',
+            controller: 'ImportData'
         })
         .when('/update-activity/:activityId', {
             templateUrl: 'static/templates/views/activity-form.html',

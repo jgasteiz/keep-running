@@ -1,14 +1,14 @@
 import csv
 import datetime
+import json
 
 from django.conf import settings
 from django.core import serializers
-from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, FormView
 
-from core.models import Activity
+from core.models import Activity, RUNKEEPER_ACTIVITY_KEYS
 from core.utils import generate_dummy_activities as generate_activities
 
 from .forms import ActivityForm, ImportDataForm
@@ -52,7 +52,8 @@ class ImportData(FormView):
         return ctx
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST, request.FILES)
+
+        form = self.form_class(data=request.POST, files=request.FILES)
         if form.is_valid():
 
             def _get_prop_value(csv_row, header_idxs, model_property_name):
@@ -83,6 +84,8 @@ class ImportData(FormView):
                     duration_list = _get_prop_value(row, csv_header_idxs, 'duration').split(':')
 
                     activity_type = _get_prop_value(row, csv_header_idxs, 'activity_type')
+                    if activity_type in RUNKEEPER_ACTIVITY_KEYS:
+                        activity_type = RUNKEEPER_ACTIVITY_KEYS[activity_type]
                     duration = _get_duration(duration_list)
                     distance = _get_prop_value(row, csv_header_idxs, 'distance')
                     calories = _get_prop_value(row, csv_header_idxs, 'calories')
@@ -97,9 +100,18 @@ class ImportData(FormView):
                         activity_notes=activity_notes,
                     )
 
-            return redirect(self.get_success_url())
+            response_data = dict(
+                message='Your data was imported correctly',
+                success=True
+            )
         else:
-            return redirect(reverse('public:import_data'))
+            response_data = dict(
+                message='Error',
+                errors=form.errors,
+                success=False
+            )
+
+        return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 import_data = ImportData.as_view()
 

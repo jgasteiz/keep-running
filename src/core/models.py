@@ -5,7 +5,9 @@ ACTIVITY_TYPES = (
     ('walking', 'Walking'),
     ('cycling', 'Cycling'),
 )
-
+RUNKEEPER_ACTIVITY_KEYS = {
+    'Running': 'running'
+}
 
 class Activity(models.Model):
     activity_type = models.CharField(

@@ -33,6 +33,7 @@ class ActivityForm(forms.ModelForm):
         helper.form_class = 'form'
         helper.attrs['name'] = 'form'
         helper.attrs['novalidate'] = ''
+        helper.attrs['ng-submit'] = 'submit(form)'
         self.helper = helper
         self.helper.layout = Layout(
             Row(
@@ -53,7 +54,7 @@ class ActivityForm(forms.ModelForm):
                 Field('activity_notes'),
             ),
             FormActions(
-                HTML('<button ng-click="submit(form)" class="btn btn-primary">Save</button>'),
+                HTML('<button class="btn btn-primary">Save</button>'),
                 HTML('<a href="#/activities" class="btn btn-default">Cancel</a>'),
             )
         )
@@ -74,11 +75,17 @@ class ImportDataForm(forms.Form):
         super(ImportDataForm, self).__init__(*args, **kwargs)
         helper = FormHelper()
         helper.form_class = 'form'
+        helper.attrs['name'] = 'form'
+        helper.attrs['novalidate'] = ''
+        helper.attrs['ng-submit'] = 'submit(form)'
         self.helper = helper
         self.helper.layout = Layout(
-            Div('csv_file',),
+            Field('csv_file'),
             FormActions(
-                Submit('submit', 'Submit'),
-                HTML('<a class="btn btn-default" href="#/activities">Cancel</a>'),
+                HTML('<button class="btn btn-primary">Import data</button>'),
+                HTML('<a href="#/activities" class="btn btn-default">Cancel</a>'),
             )
         )
+
+        self.fields['csv_file'].widget.attrs['file-model'] = 'acitivty.csvFile'
+        self.fields = angularise_fields(fields=self.fields, ng_model='activity')
