@@ -23,6 +23,8 @@ kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'Activ
 
                 $scope.title = 'Delete activity';
                 $scope.content = 'Are you sure you want to delete this activity?';
+                $scope.yes = 'Yes, delete';
+                $scope.no = 'No';
 
                 $scope.ok = function () {
                     ActivityFactory.ActivityResource.delete({id: activityId}, function() {

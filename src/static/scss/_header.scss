@@ -4,10 +4,17 @@
 		min-width: 120px;
 		padding: 10px 20px;
 	}
-	.glyphicon {
+	.icon {
 		font-size: 1.4em;
 	}
 	.title {
 		display: block;
+	}
+}
+
+.header-nav {
+	.icon {
+		font-size: 1.4em;
+		margin-right: 10px;
 	}
 }
