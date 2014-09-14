@@ -15,10 +15,20 @@
     </div>
 
     <div class="col-sm-9 activity-detail">
-        <select ng-model="currentMonth"
-                ng-options="month.label for month in months track by month.value">
-            <option value="">Select a month</option>
-        </select>
+        <div class="text-right">
+            <h4 class="current-date">
+                <span ng-bind="months[currentMonth]"></span>
+                <span ng-bind="currentYear"></span>
+            </h4>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="previousMonth()">
+                    <span class="fa fa-chevron-left"></span>
+                </button>
+                <button type="button" class="btn btn-default" ng-click="nextMonth()">
+                    <span class="fa fa-chevron-right"></span>
+                </button>
+            </div>
+        </div>
         <div bar-chart id="chart" models="activities"></div>
     </div>
 </div>

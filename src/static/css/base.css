@@ -2759,7 +2759,7 @@ p.error-message {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_header\.scss}line{font-family:\0000316}}
 .header-nav .icon {
   font-size: 1.4em;
-  margin-right: 10px;
+  margin-right: 6px;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_stats\.scss}line{font-family:\000031}}
@@ -2841,4 +2841,11 @@ p.error-message {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000352}}
 .activity-detail h2 {
   text-align: center;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_dashboard\.scss}line{font-family:\000031}}
+.current-date {
+  display: inline-block;
+  line-height: 38px;
+  margin: 0 20px 0 0;
 }
