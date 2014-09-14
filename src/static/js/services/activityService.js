@@ -30,7 +30,10 @@ kr.app.factory('ActivityFactory', ['$resource', function($resource) {
      * @returns {string}
      */
     Activity.prototype.getDate = function() {
-        return this.date.getFullYear() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getDate();
+        if (typeof(this.date) === "object") {
+            return this.date.getFullYear() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getDate();
+        }
+        return new Date(this.date);
     };
 
     /**

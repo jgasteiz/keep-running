@@ -3,7 +3,18 @@ kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'Activ
 
     var _fetchActivities = function() {
         ActivityFactory.ActivitiesResource.query(function(activities) {
-            $scope.activities = new ActivityFactory.ActivityUtils().createActivities(activities);
+            var allActivities = new ActivityFactory.ActivityUtils().createActivities(activities);
+            _groupActivities(allActivities);
+        });
+    };
+
+    var _groupActivities = function(activities) {
+        angular.forEach(activities, function(activity) {
+            var activityDate = activity.getDate().getFullYear() + '-' + activity.getDate().getMonth();
+            if (!$scope.groupedActivities[activityDate]) {
+                $scope.groupedActivities[activityDate] = [];
+            }
+            $scope.groupedActivities[activityDate].push(activity);
         });
     };
 
@@ -13,6 +24,8 @@ kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'Activ
             msg: message
         });
     };
+
+    $scope.groupedActivities = {};
 
     $scope.deleteActivity = function(activityId) {
 

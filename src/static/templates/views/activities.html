@@ -3,8 +3,12 @@
     <div role="navigation" class="col-sm-3 text-right sidebar">
         <strong>Last activities</strong>
 
-        <ul class="activity-list nav nav-pills">
-            <li ng-repeat="activity in activities"
+        <ul ng-repeat="(key, group) in groupedActivities"
+            class="activity-list nav nav-pills">
+            <li class="activity-list__item">
+                <h3 ng-bind="key"></h3>
+            </li>
+            <li ng-repeat="activity in group"
                 ng-click="showDetail([[activity.id]])"
                 ng-class="{'active': isActivitySelected(activity)}"
                 class="activity-list__item">
