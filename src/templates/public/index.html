@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Keep running</title>
-    <link rel="stylesheet" href="{% static 'css/cerulean.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cerulean.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'lib/c3/c3.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
     {% block extra_css %}{% endblock extra_css %}
 </head>
 <body ng-controller="Main" ng-cloak>
@@ -95,6 +96,7 @@
     <script src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'lib/underscore/underscore.js' %}"></script>
     <script src="{% static 'lib/d3/d3.min.js' %}"></script>
+    <script src="{% static 'lib/c3/c3.min.js' %}"></script>
 
     <script src="{% static 'lib/angular/angular.js' %}"></script>
     <script src="{% static 'lib/angular-resource/angular-resource.js' %}"></script>
@@ -103,6 +105,7 @@
 
     <script src="{% static 'js/app.js' %}"></script>
 
+    <script src="{% static 'js/directives/barChart.js' %}"></script>
     <script src="{% static 'js/directives/datepicker.js' %}"></script>
     <script src="{% static 'js/directives/djangoForm.js' %}"></script>
     <script src="{% static 'js/directives/fileModel.js' %}"></script>

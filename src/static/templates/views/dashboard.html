@@ -15,6 +15,10 @@
     </div>
 
     <div class="col-sm-9 activity-detail">
-        <h2>Fancy graphs!</h2>
+        <select ng-model="currentMonth"
+                ng-options="month.label for month in months track by month.value">
+            <option value="">Select a month</option>
+        </select>
+        <div bar-chart id="chart" models="activities"></div>
     </div>
 </div>

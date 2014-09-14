@@ -12,6 +12,16 @@ class ActivityViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny,)
     serializer_class = ActivitySerializer
 
+    def list(self, request, *args, **kwargs):
+        if 'date' in request.GET:
+            year = request.GET.get('date').split('-')[0]
+            month = request.GET.get('date').split('-')[1]
+            activity_list = Activity.objects.filter(date__month=month, date__year=year)
+        else:
+            activity_list = Activity.objects.all()
+        serializer = self.get_serializer(activity_list, many=True)
+        return Response(serializer.data)
+
 
 class StatViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
