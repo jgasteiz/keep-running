@@ -1,32 +1,48 @@
-kr.app.directive('barChart', [function() {
+kr.app.directive('barChart', ['MomentService', function(MomentService) {
     return {
+        replace: true,
         scope: {
-            models: '='
+            models: '=',
+            title: '@',
+            yAxis: '@',
+            columnUnits: '@',
+            property: '@',
+            format: '@'
         },
-        link: function(scope, element, attrs) {
+        templateUrl: '/static/templates/directives/bar-chart.html',
+        link: function(scope, element) {
+
+            var momentService = new MomentService();
+
             var _drawChart = function(activities) {
 
-                var distanceColumns = ['Km'],
+                var columns = [scope.columnUnits],
                     xAxis = ['x'];
                 angular.forEach(activities, function(activity) {
-                    distanceColumns.push(activity.getDistance());
+
+                    var value = activity[scope.property];
+                    if (scope.format === 'duration') {
+                        value = moment.duration(value).asSeconds();
+                    }
+
+                    columns.push(value);
                     xAxis.push(activity.date);
                 });
 
                 scope.chart = c3.generate({
-                    bindto: element.get(0),
+                    bindto: element.find('#chart').get(0),
                     data: {
                         x: 'x',
                         columns: [
                             xAxis,
-                            distanceColumns,
+                            columns,
                         ],
                         type: 'bar'
                     },
                     axis: {
                         y: {
                             label: {
-                                text: 'Kilometers',
+                                text: scope.yAxis,
                                 position: 'outer-middle'
                             }
                         },
@@ -46,7 +62,19 @@ kr.app.directive('barChart', [function() {
                     },
                     legend: {
                         show: false
+                    },
+                    tooltip: {
+                    format: {
+                        value: function (value, ratio, id) {
+                            switch (id) {
+                                case 'Time':
+                                    value = momentService.getDurationFromSeconds(value);
+                                    break;
+                            }
+                            return value;
+                        }
                     }
+                }
                 });
             };
 

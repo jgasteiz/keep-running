@@ -17,18 +17,42 @@
     <div class="col-sm-9 activity-detail">
         <div class="text-right">
             <h4 class="current-date">
-                <span ng-bind="months[currentMonth]"></span>
+                <span ng-bind="getMonth(currentMonth)"></span>
                 <span ng-bind="currentYear"></span>
             </h4>
             <div class="btn-group">
-                <button type="button" class="btn btn-default" ng-click="previousMonth()">
+                <button type="button" class="btn btn-default" ng-click="navigateMonth('previous')">
                     <span class="fa fa-chevron-left"></span>
                 </button>
-                <button type="button" class="btn btn-default" ng-click="nextMonth()">
+                <button type="button" class="btn btn-default" ng-click="navigateMonth()">
+                    Today
+                </button>
+                <button type="button" class="btn btn-default" ng-click="navigateMonth('next')">
                     <span class="fa fa-chevron-right"></span>
                 </button>
             </div>
         </div>
-        <div bar-chart id="chart" models="activities"></div>
+
+        <div bar-chart
+             title="Distance"
+             property="distance"
+             y-axis="Kilometers"
+             column-units="Km"
+             models="activities"></div>
+
+        <div bar-chart
+             title="Duration"
+             property="duration"
+             y-axis="hh:mm:ss"
+             column-units="Time"
+             format="duration"
+             models="activities"></div>
+
+        <div bar-chart
+             title="Calories"
+             property="calories"
+             y-axis="calories"
+             column-units="kcal"
+             models="activities"></div>
     </div>
 </div>
