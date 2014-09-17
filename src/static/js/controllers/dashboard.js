@@ -1,52 +1,40 @@
 kr.app.controller('Dashboard',
-['$scope', '$log', '$modal', '$location', 'ActivityFactory', 'MomentService',
-function($scope, $log, $modal, $location, ActivityFactory, MomentService) {
+['$scope', '$log', '$modal', '$location', 'ActivityFactory',
+function($scope, $log, $modal, $location, ActivityFactory) {
     $log.info("Dashboard Ctrl");
-
-    var momentService = new MomentService();
 
     var _fetchActivities = function() {
         ActivityFactory.ActivitiesResource.query(
-            {
-                date: $scope.currentYear + '-' + ($scope.currentMonth + 1)
-            },
+            { date: $scope.currentDate.format('YYYY-MM') },
             function(activities) {
                 $scope.activities = new ActivityFactory.ActivityUtils().createActivities(activities);
             }
         );
     };
 
-    $scope.stats = ActivityFactory.Stats.query();
     $scope.activities = [];
-
-    $scope.currentMonth = new Date().getMonth();
-    $scope.currentYear = new Date().getFullYear();
+    $scope.currentDate = moment();
+    $scope.stats = ActivityFactory.Stats.query();
 
     $scope.getMonth = function(monthIndex) {
         return momentService.getMonth(monthIndex);
     };
 
     $scope.navigateMonth = function(direction) {
-        var newDates;
         switch (direction) {
             case 'next':
-                newDates = momentService.getNextMonth($scope.currentMonth, $scope.currentYear);
+                $scope.currentDate = $scope.currentDate.add(1, 'months');
                 break;
             case 'previous':
-                newDates = momentService.getPreviousMonth($scope.currentMonth, $scope.currentYear);
+                $scope.currentDate = $scope.currentDate.subtract(1, 'months');
                 break;
             default:
-                newDates = {
-                    month: new Date().getMonth(),
-                    year: new Date().getFullYear()
-                };
+                $scope.currentDate = moment();
                 break;
         }
-        $scope.currentMonth = newDates.month;
-        $scope.currentYear = newDates.year;
     };
 
-    $scope.$watch('currentMonth', function(newVal) {
+    $scope.$watch('currentDate', function(newVal) {
         _fetchActivities();
     }, true);
 }]);

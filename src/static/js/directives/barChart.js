@@ -1,4 +1,4 @@
-kr.app.directive('barChart', ['MomentService', function(MomentService) {
+kr.app.directive('barChart', [function() {
     return {
         replace: true,
         scope: {
@@ -11,8 +11,6 @@ kr.app.directive('barChart', ['MomentService', function(MomentService) {
         },
         templateUrl: '/static/templates/directives/bar-chart.html',
         link: function(scope, element) {
-
-            var momentService = new MomentService();
 
             var _drawChart = function(activities) {
 
@@ -68,7 +66,8 @@ kr.app.directive('barChart', ['MomentService', function(MomentService) {
                         value: function (value, ratio, id) {
                             switch (id) {
                                 case 'Time':
-                                    value = momentService.getDurationFromSeconds(value);
+                                    var momentObj = moment.duration(value, 'seconds');
+                                    value = momentObj.format("h [hrs], m [min], s [sec]");
                                     break;
                             }
                             return value;

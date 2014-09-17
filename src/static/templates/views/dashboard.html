@@ -16,10 +16,7 @@
 
     <div class="col-sm-9 activity-detail">
         <div class="text-right">
-            <h4 class="current-date">
-                <span ng-bind="getMonth(currentMonth)"></span>
-                <span ng-bind="currentYear"></span>
-            </h4>
+            <h4 class="current-date" ng-bind="currentDate.format('MMMM YYYY')"></h4>
             <div class="btn-group">
                 <button type="button" class="btn btn-default" ng-click="navigateMonth('previous')">
                     <span class="fa fa-chevron-left"></span>
