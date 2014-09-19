@@ -29,4 +29,8 @@
     {% if field.field.required %}
     <p ng-show="submitted && form['{{ field.name }}'].$error.required" class="error-message">This field is required.</p>
     {% endif %}
+
+    {% if 'past-date' in field.field.widget.attrs %}
+    <p ng-show="form['{{ field.name }}'].$error.pastDate" class="error-message">The date of activity can't be after today.</p>
+    {% endif %}
 </div>
