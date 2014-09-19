@@ -20,7 +20,7 @@ kr.app.controller('NewActivity', ['$scope', '$log', '$location', 'ActivityFactor
             activity_type: this.activity.activityType,
             distance: this.activity.distance,
             calories: this.activity.calories,
-            date: this.activity.getDate(),
+            date: this.activity.getFormattedDate(),
             start_time: this.activity.startTime,
             duration: this.activity.duration,
             activity_notes: this.activity.activityNotes

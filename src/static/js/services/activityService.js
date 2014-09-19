@@ -27,13 +27,26 @@ kr.app.factory('ActivityFactory', ['$resource', function($resource) {
 
     /**
      * Returns the Activity date in the format dd-mm-yyyy.
-     * @returns {string}
+     * @return {String}
      */
-    Activity.prototype.getDate = function() {
-        if (typeof(this.date) === "object") {
-            return this.date.getFullYear() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getDate();
-        }
-        return new Date(this.date);
+    Activity.prototype.getFormattedDate = function() {
+        return moment(this.date).format('YYYY-MM-DD');
+    };
+
+    /**
+     * Returns the Activity date in the format `September 2014`.
+     * @return {String}
+     */
+    Activity.prototype.getMonthYear = function() {
+        return moment(this.date).format('MMMM YYYY');
+    };
+
+    /**
+     * Returns the Activity date in the format `Sun 19th`.
+     * @return {String}
+     */
+    Activity.prototype.getDay = function() {
+        return moment(this.date).format('ddd Do');
     };
 
     /**
@@ -47,12 +60,12 @@ kr.app.factory('ActivityFactory', ['$resource', function($resource) {
      * Create a list of activity objects receiving a list of activity property
      * objects.
      *
-     * @param activityList
+     * @param activityObjs
      * @returns {Array}
      */
-    ActivityUtils.prototype.createActivities = function(activityList) {
+    ActivityUtils.prototype.createActivities = function(activityObjs) {
         var activities = [];
-        _.each(activityList, function(activityObj) {
+        _.each(activityObjs, function(activityObj) {
             activities.push(new Activity(activityObj));
         });
         return activities;
