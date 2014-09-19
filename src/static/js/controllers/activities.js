@@ -3,18 +3,14 @@ kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'Activ
 
     var _fetchActivities = function() {
         ActivityFactory.ActivitiesResource.query(function(activities) {
-            var allActivities = new ActivityFactory.ActivityUtils().createActivities(activities);
-            _groupActivities(allActivities);
-        });
-    };
+            var activityUtils = new ActivityFactory.ActivityUtils();
+            var allActivities = activityUtils.createActivities(activities);
+            $scope.groupedActivities = activityUtils.groupActivities(allActivities);
 
-    var _groupActivities = function(activities) {
-        angular.forEach(activities, function(activity) {
-            var activityDate = activity.getDate().getFullYear() + '-' + activity.getDate().getMonth();
-            if (!$scope.groupedActivities[activityDate]) {
-                $scope.groupedActivities[activityDate] = [];
+            if ($scope.groupedActivities.length > 0) {
+                $scope.selectedGroups = new Array($scope.groupedActivities.length);
+                $scope.selectedGroups = [true];
             }
-            $scope.groupedActivities[activityDate].push(activity);
         });
     };
 

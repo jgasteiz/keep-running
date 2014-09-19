@@ -58,6 +58,49 @@ kr.app.factory('ActivityFactory', ['$resource', function($resource) {
         return activities;
     };
 
+    /**
+     * Group all activities by year-month. The final structure in
+     * `groupedActivities` should look like:
+     *
+     *  [
+     *      {
+     *          title: 'September 2014',
+     *          activities: [
+     *              { // activity 1 }, { // activity 2 }, ...
+     *          ]
+     *      },
+     *      ...
+     *  ]
+     * 
+     * @param  {Array}
+     * @return {Array}
+     */
+    ActivityUtils.prototype.groupActivities = function(activities) {
+        var oldDate,
+            groupIndex = -1,
+            groupedActivities = [];
+
+        // Group all activities
+        angular.forEach(activities, function(activity) {
+            var newDate = activity.getMonthYear();
+            
+            // If the year-month is different from the previous value, new group.
+            if (oldDate !== newDate) {
+                groupIndex += 1;
+                groupedActivities[groupIndex] = {
+                    title: newDate,
+                    activities: []
+                };
+            }
+
+            // Push the current activity in the current group.
+            groupedActivities[groupIndex].activities.push(activity);
+            oldDate = newDate;
+        });
+
+        return groupedActivities;
+    };
+
     return {
         ActivityResource: $resource('/_api/activities/:id', {id: '@id'}, {
             show: { method: 'GET' },

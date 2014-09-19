@@ -1,24 +1,27 @@
 <div class="row">
 
     <div role="navigation" class="col-sm-3 text-right sidebar">
-        <strong>Last activities</strong>
+        <h4>Last activities</h4>
 
-        <ul ng-repeat="(key, group) in groupedActivities"
-            class="activity-list nav nav-pills">
-            <li class="activity-list__item">
-                <h3 ng-bind="key"></h3>
-            </li>
-            <li ng-repeat="activity in group"
-                ng-click="showDetail([[activity.id]])"
-                ng-class="{'active': isActivitySelected(activity)}"
-                class="activity-list__item">
-                <a>
-                    <strong ng-bind="activity.date" class="activity-date"></strong>
-                    <span ng-bind="activity.activityType" class="activity-type"></span>
-                    <span ng-bind="activity.getDistance()" class="activity-distance"></span>
-                </a>
-            </li>
-        </ul>
+        <accordion close-others="true">
+
+            <accordion-group ng-repeat="group in groupedActivities"
+                             heading="[[group.title]]"
+                             is-open="selectedGroups[$index]"
+                             class="activity-list">
+                <div ng-repeat="activity in group.activities"
+                     ng-click="showDetail([[activity.id]])"
+                     ng-class="{'active': isActivitySelected(activity)}"
+                     class="activity-list__item">
+                    <a>
+                        <strong ng-bind="activity.getDay()" class="activity-date"></strong>
+                        <span ng-bind="activity.activityType" class="activity-type"></span>
+                        <span ng-bind="activity.getDistance()" class="activity-distance"></span>
+                    </a>
+                </div>
+            </accordion-group>
+                    
+        </accordion>
     </div>
 
     <div class="col-sm-9 activity-detail">

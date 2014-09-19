@@ -5,19 +5,15 @@
 
 .activity-list__item {
 	cursor: pointer;
-	display: block;
-	float: none !important;
 	margin: 5px 0;
 
+	a:hover {
+		text-decoration: none;
+	}
+
 	&.active {
-		font-weight: 300;
-
-		strong {
-			font-weight: 300;
-		}
-
-		.activity-distance {
-			color: #eee;
+		a {
+			color: #157AB5;
 		}
 	}
 }
