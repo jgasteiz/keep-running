@@ -35,6 +35,13 @@ kr.app.controller('Main', ['$scope', '$log', '$location', 'config', function($sc
         $scope.messages.splice(index, 1);
     };
 
+    $scope.addMessage = function(type, message) {
+        $scope.messages.push({
+            type: type,
+            msg: message
+        });
+    };
+
     $scope.isMenuItemActive = function(route, multipleRoutes) {
         var routes = [];
         if (multipleRoutes) {

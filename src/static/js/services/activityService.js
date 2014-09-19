@@ -1,4 +1,4 @@
-kr.app.factory('ActivityFactory', ['$resource', function($resource) {
+kr.app.factory('ActivityFactory', ['$resource', '$modal', function($resource, $modal) {
 
     /**
      * Activity class. Receives an object with the activity properties.
@@ -48,6 +48,21 @@ kr.app.factory('ActivityFactory', ['$resource', function($resource) {
     Activity.prototype.getDay = function() {
         return moment(this.date).format('ddd Do');
     };
+
+    var ActivityResource = $resource('/_api/activities/:id', {id: '@id'}, {
+        show: { method: 'GET' },
+        update: { method: 'PUT' },
+        delete: { method: 'DELETE' }
+    });
+
+    var ActivitiesResource = $resource('/_api/activities', {}, {
+        query: { method: 'GET', isArray: true },
+        create: { method: 'POST' }
+    });
+
+    var StatsResource = $resource('/_api/stats', {}, {
+        query: { method: 'GET', isArray: true },
+    });
 
     /**
      * Utils class for activities.
@@ -114,19 +129,40 @@ kr.app.factory('ActivityFactory', ['$resource', function($resource) {
         return groupedActivities;
     };
 
+    ActivityUtils.prototype.deleteActivity = function(activityId, deleteSuccess, deleteError) {
+        $modal.open({
+            templateUrl: 'static/templates/modal.html',
+            size: 'sm',
+            controller: function ($scope, $modalInstance) {
+
+                $scope.title = 'Delete activity';
+                $scope.content = 'Are you sure you want to delete this activity?';
+                $scope.yes = 'Yes, delete';
+                $scope.no = 'No';
+
+                $scope.ok = function () {
+                    ActivityResource.delete({id: activityId}, 
+                        function() {
+                            deleteSuccess();
+                            $modalInstance.close();
+                        },
+                        function() {
+                            deleteError();
+                            $modalInstance.close();
+                        });
+                };
+
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            }
+        });
+    };
+
     return {
-        ActivityResource: $resource('/_api/activities/:id', {id: '@id'}, {
-            show: { method: 'GET' },
-            update: { method: 'PUT' },
-            delete: { method: 'DELETE' }
-        }),
-        ActivitiesResource: $resource('/_api/activities', {}, {
-            query: { method: 'GET', isArray: true },
-            create: { method: 'POST' }
-        }),
-        Stats: $resource('/_api/stats', {}, {
-            query: { method: 'GET', isArray: true },
-        }),
+        ActivityResource: ActivityResource,
+        ActivitiesResource: ActivitiesResource,
+        StatsResource: StatsResource,
         Activity: Activity,
         ActivityUtils: ActivityUtils
     }

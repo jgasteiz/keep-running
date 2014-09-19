@@ -25,10 +25,10 @@ kr.app.controller('NewActivity', ['$scope', '$log', '$location', 'ActivityFactor
             duration: this.activity.duration,
             activity_notes: this.activity.activityNotes
         }).$save(function() {
-            $log.info('Activity created');
+            $scope.addMessage('success', 'Activity created');
             $location.path("/activities");
         }, function() {
-            $log.warn('There was an error creating the activity');
+            $scope.addMessage('danger', 'There was an error creating the activity');
             $location.path("/activities");
         });
     };

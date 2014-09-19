@@ -1,9 +1,10 @@
 kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'ActivityFactory', function($scope, $log, $modal, $location, ActivityFactory) {
     $log.info("Activities Ctrl");
 
+    var activityUtils = new ActivityFactory.ActivityUtils();
+
     var _fetchActivities = function() {
         ActivityFactory.ActivitiesResource.query(function(activities) {
-            var activityUtils = new ActivityFactory.ActivityUtils();
             var allActivities = activityUtils.createActivities(activities);
             $scope.groupedActivities = activityUtils.groupActivities(allActivities);
 
@@ -14,55 +15,46 @@ kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'Activ
         });
     };
 
-    var _addMessage = function(type, message) {
-        $scope.messages.push({
-            type: type,
-            msg: message
-        });
-    };
-
     $scope.groupedActivities = {};
 
+    /**
+     * Starts the process of deleting an activity.
+     * @param  {[type]} activityId [description]
+     * @return {[type]}            [description]
+     */
     $scope.deleteActivity = function(activityId) {
 
-        $modal.open({
-            templateUrl: 'static/templates/modal.html',
-            size: 'sm',
-            controller: function ($scope, $modalInstance) {
+        var deleteSuccess = function() {
+            _fetchActivities();
+            $scope.addMessage('success', 'Activity deleted');
+        };
 
-                $scope.title = 'Delete activity';
-                $scope.content = 'Are you sure you want to delete this activity?';
-                $scope.yes = 'Yes, delete';
-                $scope.no = 'No';
+        var deleteError = function(data) {
+            $scope.addMessage('danger', data);
+        };
 
-                $scope.ok = function () {
-                    ActivityFactory.ActivityResource.delete({id: activityId}, function() {
-                        _fetchActivities();
-                        _addMessage('success', 'Activity deleted');
-                        $modalInstance.close();
-                    },
-                    function(data) {
-                        _addMessage('danger', data);
-                        $modalInstance.close();
-                    });
-                };
-
-                $scope.cancel = function () {
-                    $modalInstance.dismiss('cancel');
-                };
-            }
-        });
+        activityUtils.deleteActivity(activityId, deleteSuccess, deleteError);
     };
 
+    /**
+     * Starts the process of updating an activity.
+     * @param  {[type]} activityId [description]
+     * @return {[type]}            [description]
+     */
     $scope.updateActivity = function(activityId) {
         $location.path('/update-activity/' + activityId);
     };
 
+    /**
+     * Marks an activity as selected and shows its details.
+     * @param  {[type]} activityId [description]
+     * @return {[type]}            [description]
+     */
     $scope.showDetail = function(activityId) {
         ActivityFactory.ActivityResource.show({id: activityId}, function(activity) {
             $scope.setActivity(new ActivityFactory.Activity(activity));
         }, function(data) {
-            _addMessage('danger', data);
+            $scope.addMessage('danger', data);
         });
     };
 

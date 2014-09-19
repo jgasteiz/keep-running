@@ -31,10 +31,10 @@ kr.app.controller('UpdateActivity', ['$scope', '$log', '$location', '$routeParam
             duration: this.activity.duration,
             activity_notes: this.activity.activityNotes
         }, function() {
-            $log.info('Activity updated');
+            $scope.addMessage('success', 'Activity updated');
             $location.path("/activities");
         }, function() {
-            $log.warn('There was an error updated the activity');
+            $scope.addMessage('danger', 'There was an error updating the activity');
             $location.path("/activities");
         });
     };
