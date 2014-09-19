@@ -1,10 +1,12 @@
-kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'ActivityFactory', function($scope, $log, $modal, $location, ActivityFactory) {
+kr.app.controller('Activities',
+['$scope', '$log', '$modal', '$location', 'ActivityUtils', 'Activity',
+function($scope, $log, $modal, $location, ActivityUtils, Activity) {
     $log.info("Activities Ctrl");
 
-    var activityUtils = new ActivityFactory.ActivityUtils();
+    var activityUtils = new ActivityUtils();
 
     var _fetchActivities = function() {
-        ActivityFactory.ActivitiesResource.query(function(activities) {
+        activityUtils.getActivities({}, function(activities) {
             var allActivities = activityUtils.createActivities(activities);
             $scope.groupedActivities = activityUtils.groupActivities(allActivities);
 
@@ -24,16 +26,13 @@ kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'Activ
      */
     $scope.deleteActivity = function(activityId) {
 
-        var deleteSuccess = function() {
-            _fetchActivities();
-            $scope.addMessage('success', 'Activity deleted');
-        };
-
-        var deleteError = function(data) {
-            $scope.addMessage('danger', data);
-        };
-
-        activityUtils.deleteActivity(activityId, deleteSuccess, deleteError);
+        activityUtils.deleteActivity(activityId,
+            function() {
+                _fetchActivities();
+                $scope.addMessage('success', 'Activity deleted');
+            }, function(data) {
+                $scope.addMessage('danger', data);
+            });
     };
 
     /**
@@ -51,8 +50,8 @@ kr.app.controller('Activities', ['$scope', '$log', '$modal', '$location', 'Activ
      * @return {[type]}            [description]
      */
     $scope.showDetail = function(activityId) {
-        ActivityFactory.ActivityResource.show({id: activityId}, function(activity) {
-            $scope.setActivity(new ActivityFactory.Activity(activity));
+        activityUtils.getActivity(activityId, function(activity) {
+            $scope.setActivity(new Activity(activity));
         }, function(data) {
             $scope.addMessage('danger', data);
         });

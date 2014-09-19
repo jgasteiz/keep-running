@@ -1,20 +1,21 @@
 kr.app.controller('Dashboard',
-['$scope', '$log', '$modal', '$location', 'ActivityFactory',
-function($scope, $log, $modal, $location, ActivityFactory) {
+['$scope', '$log', '$modal', '$location', 'ActivityUtils',
+function($scope, $log, $modal, $location, ActivityUtils) {
     $log.info("Dashboard Ctrl");
 
+    var activityUtils = new ActivityUtils();
+
     var _fetchActivities = function() {
-        ActivityFactory.ActivitiesResource.query(
-            { date: $scope.currentDate.format('YYYY-MM') },
-            function(activities) {
-                $scope.activities = new ActivityFactory.ActivityUtils().createActivities(activities);
-            }
-        );
+        activityUtils.getActivities({
+            date: $scope.currentDate.format('YYYY-MM')
+        }, function(activities) {
+            $scope.activities = activityUtils.createActivities(activities);
+        });
     };
 
     $scope.activities = [];
     $scope.currentDate = moment();
-    $scope.stats = ActivityFactory.Stats.query();
+    $scope.stats = activityUtils.getStats();
 
     $scope.getMonth = function(monthIndex) {
         return momentService.getMonth(monthIndex);

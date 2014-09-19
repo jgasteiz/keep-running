@@ -1,9 +1,13 @@
-kr.app.controller('NewActivity', ['$scope', '$log', '$location', 'ActivityFactory', function($scope, $log, $location, ActivityFactory) {
+kr.app.controller('NewActivity',
+['$scope', '$log', '$location', 'ActivityUtils', 'Activity',
+function($scope, $log, $location, ActivityUtils, Activity) {
     $log.info("New Activity Ctrl");
 
+    var activityUtils = new ActivityUtils();
+    
     $scope.title = 'New activity';
 
-    $scope.activity = new ActivityFactory.Activity({
+    $scope.activity = new Activity({
         activity_type: 'running',
         date: new Date()
     });
@@ -16,21 +20,15 @@ kr.app.controller('NewActivity', ['$scope', '$log', '$location', 'ActivityFactor
             return;
         }
 
-        new ActivityFactory.ActivityResource({
-            activity_type: this.activity.activityType,
-            distance: this.activity.distance,
-            calories: this.activity.calories,
-            date: this.activity.getFormattedDate(),
-            start_time: this.activity.startTime,
-            duration: this.activity.duration,
-            activity_notes: this.activity.activityNotes
-        }).$save(function() {
-            $scope.addMessage('success', 'Activity created');
-            $location.path("/activities");
-        }, function() {
-            $scope.addMessage('danger', 'There was an error creating the activity');
-            $location.path("/activities");
-        });
+        activityUtils.createActivity(
+            this.activity,
+            function() {
+                $scope.addMessage('success', 'Activity created');
+                $location.path("/activities");
+            }, function() {
+                $scope.addMessage('danger', 'There was an error creating the activity');
+                $location.path("/activities");
+            });
     };
 
 }]);
