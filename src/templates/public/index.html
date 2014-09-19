@@ -40,6 +40,12 @@
         </div>
     </div>
 
+    <div class="messages">
+        <alert ng-repeat="message in messages" type="[[message.type]]" close="removeMessage($index)">
+            <div ng-bind="message.msg"></div>
+        </alert>
+    </div>
+
     <div role="main" class="container">
 
         <div class="profile-header" ng-show="isMenuItemActive('me', true)">
@@ -49,11 +55,6 @@
                 </div>
 
                 <div class="col-sm-9">
-                    <alert ng-repeat="message in messages"
-                           type="[[message.type]]"
-                           close="removeMessage($index)"
-                           ng-bind="message.msg"></alert>
-
                     <ul class="nav nav-pills" role="tablist">
                         <li ng-class="{'active': isMenuItemActive('/')}">
                             <a class="text-center" href="/">

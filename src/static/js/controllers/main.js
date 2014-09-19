@@ -1,4 +1,6 @@
-kr.app.controller('Main', ['$scope', '$log', '$location', 'config', function($scope, $log, $location, config) {
+kr.app.controller('Main',
+['$scope', '$log', '$location', '$timeout', 'config',
+function($scope, $log, $location, $timeout, config) {
     $log.info("Main controller");
 
     /**
@@ -40,6 +42,10 @@ kr.app.controller('Main', ['$scope', '$log', '$location', 'config', function($sc
             type: type,
             msg: message
         });
+        var messageIndex = $scope.messages.length - 1;
+        $timeout(function() {
+            $scope.removeMessage(messageIndex);
+        }, 6000);
     };
 
     $scope.isMenuItemActive = function(route, multipleRoutes) {

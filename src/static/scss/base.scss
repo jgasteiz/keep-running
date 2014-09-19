@@ -20,6 +20,22 @@ body {
 	border-right: 1px solid #eee;
 }
 
+.messages {
+	left: 50%;
+	margin-left: -200px;
+	position: fixed;
+	top: 60px;
+	width: 400px;
+	z-index: 999;
+
+	@media (max-width: 768px) {
+		left: 10px;
+		margin: 0;
+		right: 10px;
+		width: auto;
+	}
+}
+
 p.error-message {
 	color: #A94442;
 	margin: 10px 0;
