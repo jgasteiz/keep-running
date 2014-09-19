@@ -22,22 +22,13 @@ kr.app.controller('ImportData', ['$scope', '$log', '$location', '$http', functio
             headers: {'Content-Type': undefined}
         }).success(function(data) {
             if (data.success === true) {
-                $scope.messages.push({
-                    type: 'success',
-                    msg: data.message
-                });
+                $scope.addMessage('success', data.message);
                 $location.path("/activities");
             } else {
-                $scope.messages.push({
-                    type: 'danger',
-                    msg: data.message + ', ' + data.errors
-                });
+                $scope.addMessage('danger', data.message + ', ' + data.errors);
             }
         }).error(function(data) {
-            $scope.messages.push({
-                type: 'danger',
-                msg: 'There was an error: ' + data
-            });
+            $scope.addMessage('danger', 'There was an error: ' + data);
         });
 
     };

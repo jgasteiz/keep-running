@@ -63,7 +63,8 @@ p.error-message {
 	font-weight: 700;
 }
 
-@import 'header';
-@import 'stats';
-@import 'activities';
-@import 'dashboard';
+@import "header";
+@import "stats";
+@import "activities";
+@import "bar-chart";
+@import "dashboard";
