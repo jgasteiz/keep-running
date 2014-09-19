@@ -9,6 +9,7 @@ RUNKEEPER_ACTIVITY_KEYS = {
     'Running': 'running'
 }
 
+
 class Activity(models.Model):
     activity_type = models.CharField(
         verbose_name=u"Activity type", choices=ACTIVITY_TYPES, default='running', max_length=256)
@@ -23,4 +24,5 @@ class Activity(models.Model):
         ordering = ('-date',)
 
     def __unicode__(self):
-        return '%s, on %s, %sh, %skm' % (self.activity_type, self.date, self.duration, self.distance)
+        return '%s, on %s, %sh, %skm' % (
+            self.activity_type, self.date, self.duration, self.distance)

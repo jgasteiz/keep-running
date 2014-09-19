@@ -19,5 +19,6 @@ urlpatterns = patterns(
     url(r'^_api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'^activities/import_data/$', 'import_data', name='import_data'),
-    url(r'^activities/generate_dummy/$', 'generate_dummy_activities', name='generate_dummy_activities'),
+    url(r'^activities/generate_dummy/$', 'generate_dummy_activities',
+        name='generate_dummy_activities'),
 )

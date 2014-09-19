@@ -1,5 +1,5 @@
 from crispy_forms.bootstrap import FormActions
-from crispy_forms.layout import Layout, Submit, HTML, Row, Div, Field
+from crispy_forms.layout import Layout, HTML, Row, Div, Field
 from crispy_forms.helper import FormHelper
 import floppyforms.__future__ as forms
 

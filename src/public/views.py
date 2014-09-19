@@ -3,7 +3,6 @@ import datetime
 import json
 
 from django.conf import settings
-from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, FormView
@@ -57,7 +56,8 @@ class ImportData(FormView):
         if form.is_valid():
 
             def _get_prop_value(csv_row, header_idxs, model_property_name):
-                return csv_row[header_idxs[ACTIVITY_MODEL_PROPERTIES[model_property_name]]]
+                csv_header = ACTIVITY_MODEL_PROPERTIES[model_property_name]
+                return csv_row[header_idxs[csv_header]]
 
             def _get_duration(duration=[]):
                 if len(duration) == 2:
@@ -122,26 +122,3 @@ def generate_dummy_activities(request):
         return render(request, 'public/debug/dummy_activities_generated.html')
     else:
         return redirect('public:home')
-
-
-def get_activities(request, model):
-    if not 'date' in request.GET:
-        current_date = datetime.datetime.now()
-        min_date = datetime.date(current_date.year, current_date.month, 1)
-        queryset = model.objects.filter(date__gte=min_date)
-    else:
-        # TODO: make this nicer
-        date_str = request.GET.get('date')
-        current_date = datetime.datetime.strptime(date_str, "%Y-%m")
-        min_date = datetime.date(current_date.year, current_date.month, 1)
-        next_month = min_date + datetime.timedelta(days=32)
-        max_date = datetime.date(next_month.year, next_month.month, 1) - datetime.timedelta(days=1)
-        queryset = model.objects.filter(date__gte=min_date, date__lte=max_date)
-    return queryset, current_date
-
-
-def activity_json(request):
-    queryset, date = get_activities(request, Activity)
-    response_data = serializers.serialize(
-        'json', queryset.order_by('date'))
-    return HttpResponse(response_data, content_type="application/json")
