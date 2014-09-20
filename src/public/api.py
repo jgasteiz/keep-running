@@ -14,9 +14,15 @@ class ActivityViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         if 'date' in request.GET:
-            year = request.GET.get('date').split('-')[0]
-            month = request.GET.get('date').split('-')[1]
-            activity_list = Activity.objects.filter(date__month=month, date__year=year)
+            splitted_date = request.GET.get('date').split('-')
+
+            year = splitted_date[0]
+            activity_list = Activity.objects.filter(date__year=year)
+
+            if len(splitted_date) == 2:
+                month = splitted_date[1]
+                activity_list = activity_list.filter(date__month=month)
+
         else:
             activity_list = Activity.objects.all()
         serializer = self.get_serializer(activity_list, many=True)

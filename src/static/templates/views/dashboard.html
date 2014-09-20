@@ -15,16 +15,40 @@
     </div>
 
     <div class="col-sm-9 activity-detail">
-        <div class="text-right">
-            <span class="current-date" ng-bind="currentDate.format('MMMM YYYY')"></span>
+
+        <div class="btn-group mode-selector">
+            <button class="btn btn-default"
+                    ng-class="{'active': selectedMode === 'month'}"
+                    ng-checked="selectedMode === 'month'"
+                    ng-click="changeMode('month')">
+                Month view
+            </button>
+            <button class="btn btn-default"
+                    ng-class="{'active': selectedMode === 'year'}"
+                    ng-checked="selectedMode === 'year'"
+                    ng-click="changeMode('year')">
+                Year view
+            </button>
+        </div>
+
+        <div class="text-right date-selector">
+            <span class="current-date" ng-bind="getCurrentDate()"></span>
             <div class="btn-group">
-                <button type="button" class="btn btn-default" ng-click="navigateMonth('previous')">
+                <button type="button"
+                        class="btn btn-default"
+                        ng-click="navigateDate('previous')">
                     <span class="fa fa-chevron-left"></span>
                 </button>
-                <button type="button" class="btn btn-default" ng-click="navigateMonth()">
-                    Today
+                <button type="button"
+                        class="btn btn-default"
+                        ng-disabled="isCurrentDate()"
+                        ng-click="navigateDate()">
+                    <span ng-bind="currentModeHumanized()"></span>
                 </button>
-                <button type="button" class="btn btn-default" ng-click="navigateMonth('next')">
+                <button type="button"
+                        class="btn btn-default"
+                        ng-disabled="isCurrentDate()"
+                        ng-click="navigateDate('next')">
                     <span class="fa fa-chevron-right"></span>
                 </button>
             </div>
