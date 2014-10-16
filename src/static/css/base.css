@@ -11,7 +11,6 @@
   font-weight: normal;
   font-style: normal;
 }
-
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_core\.scss}line{font-family:\000034}}
 .fa {
   display: inline-block;
@@ -125,7 +124,6 @@
     transform: rotate(359deg);
   }
 }
-
 @keyframes fa-spin {
   /* line 21, ../scss/fontawesome/_spinning.scss */
   0% {
@@ -139,7 +137,6 @@
     transform: rotate(359deg);
   }
 }
-
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_rotated-flipped\.scss}line{font-family:\000034}}
 .fa-rotate-90 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
@@ -180,7 +177,7 @@
   transform: scale(1, -1);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_rotated-flipped\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_rotated-flipped\.scss}line{font-family:\0000314}}
 :root .fa-rotate-90,
 :root .fa-rotate-180,
 :root .fa-rotate-270,
@@ -289,7 +286,7 @@
   content: "\f00c";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000317}}
 .fa-remove:before,
 .fa-close:before,
 .fa-times:before {
@@ -316,7 +313,7 @@
   content: "\f012";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000325}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000324}}
 .fa-gear:before,
 .fa-cog:before {
   content: "\f013";
@@ -372,7 +369,7 @@
   content: "\f01d";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000336}}
 .fa-rotate-right:before,
 .fa-repeat:before {
   content: "\f01e";
@@ -508,7 +505,7 @@
   content: "\f03a";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000364}}
 .fa-dedent:before,
 .fa-outdent:before {
   content: "\f03b";
@@ -524,7 +521,7 @@
   content: "\f03d";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000370}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000368}}
 .fa-photo:before,
 .fa-image:before,
 .fa-picture-o:before {
@@ -551,7 +548,7 @@
   content: "\f043";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000376}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\0000375}}
 .fa-edit:before,
 .fa-pencil-square-o:before {
   content: "\f044";
@@ -702,7 +699,7 @@
   content: "\f063";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003107}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003106}}
 .fa-mail-forward:before,
 .fa-share:before {
   content: "\f064";
@@ -763,7 +760,7 @@
   content: "\f070";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003120}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003119}}
 .fa-warning:before,
 .fa-exclamation-triangle:before {
   content: "\f071";
@@ -834,7 +831,7 @@
   content: "\f07e";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003135}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003134}}
 .fa-bar-chart-o:before,
 .fa-bar-chart:before {
   content: "\f080";
@@ -860,7 +857,7 @@
   content: "\f084";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003141}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003140}}
 .fa-gears:before,
 .fa-cogs:before {
   content: "\f085";
@@ -1076,13 +1073,13 @@
   content: "\f0b2";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003185}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003184}}
 .fa-group:before,
 .fa-users:before {
   content: "\f0c0";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003187}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003186}}
 .fa-chain:before,
 .fa-link:before {
   content: "\f0c1";
@@ -1098,13 +1095,13 @@
   content: "\f0c3";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003191}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003190}}
 .fa-cut:before,
 .fa-scissors:before {
   content: "\f0c4";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003193}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003192}}
 .fa-copy:before,
 .fa-files-o:before {
   content: "\f0c5";
@@ -1115,7 +1112,7 @@
   content: "\f0c6";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003196}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003195}}
 .fa-save:before,
 .fa-floppy-o:before {
   content: "\f0c7";
@@ -1126,7 +1123,7 @@
   content: "\f0c8";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003200}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003198}}
 .fa-navicon:before,
 .fa-reorder:before,
 .fa-bars:before {
@@ -1218,19 +1215,19 @@
   content: "\f0db";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003219}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003218}}
 .fa-unsorted:before,
 .fa-sort:before {
   content: "\f0dc";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003221}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003220}}
 .fa-sort-down:before,
 .fa-sort-desc:before {
   content: "\f0dd";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003223}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003222}}
 .fa-sort-up:before,
 .fa-sort-asc:before {
   content: "\f0de";
@@ -1246,19 +1243,19 @@
   content: "\f0e1";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003227}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003226}}
 .fa-rotate-left:before,
 .fa-undo:before {
   content: "\f0e2";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003229}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003228}}
 .fa-legal:before,
 .fa-gavel:before {
   content: "\f0e3";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003231}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003230}}
 .fa-dashboard:before,
 .fa-tachometer:before {
   content: "\f0e4";
@@ -1274,7 +1271,7 @@
   content: "\f0e6";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003235}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003234}}
 .fa-flash:before,
 .fa-bolt:before {
   content: "\f0e7";
@@ -1290,7 +1287,7 @@
   content: "\f0e9";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003239}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003238}}
 .fa-paste:before,
 .fa-clipboard:before {
   content: "\f0ea";
@@ -1446,7 +1443,7 @@
   content: "\f10a";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003271}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003270}}
 .fa-mobile-phone:before,
 .fa-mobile:before {
   content: "\f10b";
@@ -1477,7 +1474,7 @@
   content: "\f111";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003278}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003277}}
 .fa-mail-reply:before,
 .fa-reply:before {
   content: "\f112";
@@ -1543,13 +1540,13 @@
   content: "\f121";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003292}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003291}}
 .fa-mail-reply-all:before,
 .fa-reply-all:before {
   content: "\f122";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003295}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003293}}
 .fa-star-half-empty:before,
 .fa-star-half-full:before,
 .fa-star-half-o:before {
@@ -1571,7 +1568,7 @@
   content: "\f126";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003300}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003299}}
 .fa-unlink:before,
 .fa-chain-broken:before {
   content: "\f127";
@@ -1762,25 +1759,25 @@
   content: "\f14e";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003338}}
 .fa-toggle-down:before,
 .fa-caret-square-o-down:before {
   content: "\f150";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003340}}
 .fa-toggle-up:before,
 .fa-caret-square-o-up:before {
   content: "\f151";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003343}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003342}}
 .fa-toggle-right:before,
 .fa-caret-square-o-right:before {
   content: "\f152";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003344}}
 .fa-euro:before,
 .fa-eur:before {
   content: "\f153";
@@ -1791,19 +1788,19 @@
   content: "\f154";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003348}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003347}}
 .fa-dollar:before,
 .fa-usd:before {
   content: "\f155";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003350}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003349}}
 .fa-rupee:before,
 .fa-inr:before {
   content: "\f156";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003351}}
 .fa-cny:before,
 .fa-rmb:before,
 .fa-yen:before,
@@ -1811,20 +1808,20 @@
   content: "\f157";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003355}}
 .fa-ruble:before,
 .fa-rouble:before,
 .fa-rub:before {
   content: "\f158";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003358}}
 .fa-won:before,
 .fa-krw:before {
   content: "\f159";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003360}}
 .fa-bitcoin:before,
 .fa-btc:before {
   content: "\f15a";
@@ -2080,7 +2077,7 @@
   content: "\f190";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003413}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003412}}
 .fa-toggle-left:before,
 .fa-caret-square-o-left:before {
   content: "\f191";
@@ -2101,7 +2098,7 @@
   content: "\f194";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003418}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003417}}
 .fa-turkish-lira:before,
 .fa-try:before {
   content: "\f195";
@@ -2137,14 +2134,14 @@
   content: "\f19b";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003427}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003425}}
 .fa-institution:before,
 .fa-bank:before,
 .fa-university:before {
   content: "\f19c";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003429}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003428}}
 .fa-mortar-board:before,
 .fa-graduation-cap:before {
   content: "\f19d";
@@ -2275,13 +2272,13 @@
   content: "\f1b8";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003456}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003455}}
 .fa-automobile:before,
 .fa-car:before {
   content: "\f1b9";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003458}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003457}}
 .fa-cab:before,
 .fa-taxi:before {
   content: "\f1ba";
@@ -2332,26 +2329,26 @@
   content: "\f1c4";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003470}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003468}}
 .fa-file-photo-o:before,
 .fa-file-picture-o:before,
 .fa-file-image-o:before {
   content: "\f1c5";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003472}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003471}}
 .fa-file-zip-o:before,
 .fa-file-archive-o:before {
   content: "\f1c6";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003474}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003473}}
 .fa-file-sound-o:before,
 .fa-file-audio-o:before {
   content: "\f1c7";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003476}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003475}}
 .fa-file-movie-o:before,
 .fa-file-video-o:before {
   content: "\f1c8";
@@ -2377,7 +2374,7 @@
   content: "\f1cc";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003485}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003481}}
 .fa-life-bouy:before,
 .fa-life-buoy:before,
 .fa-life-saver:before,
@@ -2391,13 +2388,13 @@
   content: "\f1ce";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003488}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003487}}
 .fa-ra:before,
 .fa-rebel:before {
   content: "\f1d0";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003490}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003489}}
 .fa-ge:before,
 .fa-empire:before {
   content: "\f1d1";
@@ -2428,19 +2425,19 @@
   content: "\f1d6";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003497}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003496}}
 .fa-wechat:before,
 .fa-weixin:before {
   content: "\f1d7";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003499}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003498}}
 .fa-send:before,
 .fa-paper-plane:before {
   content: "\f1d8";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003501}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003500}}
 .fa-send-o:before,
 .fa-paper-plane-o:before {
   content: "\f1d9";
@@ -2486,7 +2483,7 @@
   content: "\f1e2";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003511}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003510}}
 .fa-soccer-ball-o:before,
 .fa-futbol-o:before {
   content: "\f1e3";
@@ -2677,7 +2674,7 @@
   content: "\f20a";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003551}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/fontawesome\/_icons\.scss}line{font-family:\00003549}}
 .fa-shekel:before,
 .fa-sheqel:before,
 .fa-ils:before {
@@ -2689,7 +2686,7 @@
   content: "\f20c";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/base\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/base\.scss}line{font-family:\000034}}
 html,
 body {
   background-color: #f0f0f0;
@@ -2827,7 +2824,7 @@ p.error-message {
   margin: 20px 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/javi\/dev\/keep-running\/src\/static\/scss\/_activities\.scss}line{font-family:\0000325}}
 .activity-date,
 .activity-type,
 .activity-distance {

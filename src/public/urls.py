@@ -16,7 +16,8 @@ urlpatterns = patterns(
     url(r'^$', views.Home.as_view(), name='home'),
 
     url(r'^_api/', include(router.urls)),
-    url(r'^_api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^_api-auth/', include('rest_framework.urls',
+                                namespace='rest_framework')),
 
     url(r'^activities/import_data/$', 'import_data', name='import_data'),
     url(r'^activities/generate_dummy/$', 'generate_dummy_activities',

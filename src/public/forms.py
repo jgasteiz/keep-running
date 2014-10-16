@@ -55,7 +55,8 @@ class ActivityForm(forms.ModelForm):
             ),
             FormActions(
                 HTML('<button class="btn btn-primary">Save</button>'),
-                HTML('<a href="#/activities" class="btn btn-default">Cancel</a>'),
+                HTML('<a href="#/activities" \
+                    class="btn btn-default">Cancel</a>'),
             )
         )
 
@@ -68,7 +69,8 @@ class ActivityForm(forms.ModelForm):
 
 
 class ImportDataForm(forms.Form):
-    csv_file = forms.FileField(label='CSV file', help_text="""Import your exported
+    csv_file = forms.FileField(
+        label='CSV file', help_text="""Import your exported
         Runkeeper CSV file with your activities""")
 
     def __init__(self, *args, **kwargs):
@@ -83,7 +85,8 @@ class ImportDataForm(forms.Form):
             Field('csv_file'),
             FormActions(
                 HTML('<button class="btn btn-primary">Import data</button>'),
-                HTML('<a href="#/activities" class="btn btn-default">Cancel</a>'),
+                HTML('<a href="#/activities" \
+                    class="btn btn-default">Cancel</a>'),
             )
         )
 
